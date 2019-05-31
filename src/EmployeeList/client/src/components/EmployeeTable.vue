@@ -22,8 +22,10 @@ import EmployeeService from '@/services/employee-service'
 
  export default {
     name: 'employee-table',
-    props: {
-        employees: Array
+    data () {
+        return {
+            employees: []
+        }
     },
     created () {
         EmployeeService.getAll().then(response => {
