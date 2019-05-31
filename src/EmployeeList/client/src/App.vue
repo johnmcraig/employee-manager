@@ -4,9 +4,6 @@
     <employee-form @add:employee="addEmployee" />
 
     <employee-table :employee="employees"/>
-    <ul>
-      <li>{{ employees }}</li>
-    </ul>
   </div>
 </template>
 
@@ -23,18 +20,17 @@ export default {
   },
   data () {
     return {
-      employees: []
     }
   },
-  created () {
-    EmployeeService.getAll().then(response => {
-         this.employees = response.data
-        console.log(response.data)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  },
+  // created () {
+  //   EmployeeService.getAll().then(response => {
+  //        this.employees = response.data
+  //       console.log(response.data)
+  //     })
+  //     .catch(error => {
+  //       console.log(error)
+  //     })
+  // },
   methods: {
     addEmployee(employee) {
       this.employees = [...this.employees, employee]
