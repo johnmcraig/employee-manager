@@ -18,11 +18,22 @@
 </template>
 
 <script>
+import EmployeeService from '@/services/employee-service'
+
  export default {
     name: 'employee-table',
     props: {
-        employees: Array,
-    }        
+        employees: Array
+    },
+    created () {
+        EmployeeService.getAll().then(response => {
+            this.employees = response.data
+            console.log(response.data)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }       
 }
 </script>
 
