@@ -22,15 +22,6 @@ export default {
     return {
     }
   },
-  // created () {
-  //   EmployeeService.getAll().then(response => {
-  //        this.employees = response.data
-  //       console.log(response.data)
-  //     })
-  //     .catch(error => {
-  //       console.log(error)
-  //     })
-  // },
   methods: {
     addEmployee(employee) {
       this.employees = [...this.employees, employee]
