@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using server.Data;
 using server.Data.Entites;
+using server.Models;
 
 namespace server.Controllers
 {
@@ -49,10 +50,12 @@ namespace server.Controllers
             {
                 var employees = await _dbContext.Employees.ToListAsync();
 
+                EmployeeModel[] models = _mapper.Map<EmployeeModel[]>(employees);
+
                 if(employees == null)
                     return NotFound ();
 
-                return Ok(employees);
+                return Ok(models);
             } 
             catch(Exception ex)
             {
