@@ -1,6 +1,6 @@
 import Axios from 'axios'
 
-const RESOURCE_NAME = '/employee'
+const RESOURCE_NAME = '/employees'
 
 export default {
     getAll () {
