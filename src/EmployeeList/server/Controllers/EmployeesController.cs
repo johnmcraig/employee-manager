@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using server.Data;
-using server.Models;
+using server.Data.Entites;
 
 namespace server.Controllers
 {
     [Route ("api/[controller]")]
     [ApiController]
-    public class EmployeeController : ControllerBase
+    public class EmployeesController : ControllerBase
     {
         private readonly EmployeeDbContext _dbContext;
-        public EmployeeController (EmployeeDbContext dbContext)
+        public EmployeesController (EmployeeDbContext dbContext)
         {
            _dbContext = dbContext;
 
