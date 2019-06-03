@@ -65,9 +65,9 @@ namespace server
                 app.UseHsts();
             }
 
-            AutoMapper.Mapper.Initialize(Mapper=>
+            AutoMapper.Mapper.Initialize(mapper =>
             {
-                Mapper.CreateMap<Employee, EmployeeModel>().ReverseMap();
+                mapper.CreateMap<Employee, EmployeeModel>().ReverseMap();
             });
 
             app.UseHttpsRedirection();
