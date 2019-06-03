@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -13,6 +14,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using server.Data;
+using server.Data.Entites;
+using server.Models;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace server
@@ -61,6 +64,11 @@ namespace server
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            AutoMapper.Mapper.Initialize(Mapper=>
+            {
+                Mapper.CreateMap<Employee, EmployeeModel>().ReverseMap();
+            });
 
             app.UseHttpsRedirection();
 
