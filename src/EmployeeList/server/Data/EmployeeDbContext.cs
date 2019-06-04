@@ -1,40 +1,30 @@
 using System;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using server.Data.Entites;
 
 namespace server.Data
 {
     public class EmployeeDbContext : DbContext
     {
-        public EmployeeDbContext(DbContextOptions<EmployeeDbContext> options) : base(options)
+        private readonly IConfiguration _config;
+        public EmployeeDbContext(DbContextOptions<EmployeeDbContext> options, IConfiguration config) : base(options)
         {
+            _config = config;
         }
 
         public DbSet<Employee> Employees { get; set; }
 
-        // protected override void OnModelCreating(ModelBuilder modelBuilder)
-        // {
-        //     base.OnModelCreating(modelBuilder);
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseInMemoryDatabase("Employees");
+        }
 
-        //     modelBuilder.Entity<Employee>()
-        //         .HasData(new 
-        //        {
-        //            Id = Guid.NewGuid(),
-        //            Name = "Richard Hendricks",
-        //            Email = "contact@richardhendrinks.com"
-        //        },
-        //        new 
-        //        {
-        //            Id = Guid.NewGuid(),
-        //            Name = "Bertram Gilfoye",
-        //            Email = "contact@bertramgilfoye.com"
-        //        },
-        //        new
-        //        {
-        //            Id = Guid.NewGuid(),
-        //            Name = "Denish Chugtai",
-        //            Email = "contact@denishchutai.com"
-        //        });
-        // }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Employee>();
+        }
     }
 }
