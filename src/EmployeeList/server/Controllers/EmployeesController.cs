@@ -15,35 +15,12 @@ namespace server.Controllers
     [ApiController]
     public class EmployeesController : ControllerBase
     {
-        private readonly EmployeeDbContext _dbContext;
         private readonly IEmployeeRepository _repo;
         private readonly IMapper _mapper;
 
-        public EmployeesController (IEmployeeRepository repo, IMapper mapper)
+        public EmployeesController (IEmployeeRepository repo)
         {
             _repo = repo;
-            _mapper = mapper;
-            
-
-            if(_dbContext.Employees.Count() == 0)
-            {
-                _dbContext.AddRange(new Employee
-                {
-                        Name = "Richard Hendricks",
-                        Email = "contact@richardhendrinks.com"
-                },
-                new Employee
-                {
-                    Name = "Bertram Gilfoye",
-                    Email = "contact@bertramgilfoye.com"
-                },
-                new Employee
-                {
-                    Name = "Denish Chugtai",
-                    Email = "contact@denishchutai.com"
-                });
-                _dbContext.SaveChanges();
-            }
         }
 
         [HttpGet]
@@ -51,9 +28,9 @@ namespace server.Controllers
         {
             try
             {
-                var employees = await _dbContext.Employees.ToListAsync();
+                var employees = await _repo.GettAllEmployeesAsync();
 
-                EmployeeModel[] models = _mapper.Map<EmployeeModel[]>(employees);
+                EmployeeModel[] models = Mapper.Map<EmployeeModel[]>(employees);
 
                 if(employees == null)
                     return NotFound ();
@@ -67,11 +44,11 @@ namespace server.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult> GetSingle (Guid id)
+        public async Task<ActionResult> GetSingle(Guid id)
         {
             try
             {
-                var employee = await _dbContext.Employees.FirstOrDefaultAsync(x => x.Id == id);
+                var employee = await _repo.GetEmployeeAsync(id);
 
                 if(employee == null)
                     return NotFound();
