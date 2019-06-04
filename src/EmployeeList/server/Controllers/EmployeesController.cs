@@ -16,11 +16,14 @@ namespace server.Controllers
     public class EmployeesController : ControllerBase
     {
         private readonly EmployeeDbContext _dbContext;
+        private readonly IEmployeeRepository _repo;
         private readonly IMapper _mapper;
-        public EmployeesController (EmployeeDbContext dbContext, IMapper mapper)
+
+        public EmployeesController (IEmployeeRepository repo, IMapper mapper)
         {
+            _repo = repo;
             _mapper = mapper;
-            _dbContext = dbContext;
+            
 
             if(_dbContext.Employees.Count() == 0)
             {
