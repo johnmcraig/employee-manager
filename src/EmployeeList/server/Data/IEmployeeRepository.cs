@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using server.Data.Entites;
 
@@ -10,6 +11,6 @@ namespace server.Data
          Task<bool> SaveChangesAsync();
 
          Task<Employee[]> GettAllEmployeesAsync();
-         Task<Employee> GetEmployee(string name);
+         Task<Employee> GetEmployeeAsync(Guid id);
     }
 }
