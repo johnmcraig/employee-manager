@@ -32,9 +32,9 @@ namespace server
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<EmployeeDbContext>(o => {
-                o.UseInMemoryDatabase("Employees");
-            });
+            services.AddDbContext<EmployeeDbContext>();
+
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
             services.AddCors(o => {
                 o.AddPolicy("CorsPolicy", builder => builder.AllowAnyOrigin()
@@ -50,10 +50,14 @@ namespace server
             {
                 c.SwaggerDoc("v1", new Info { Title = "EmployeeAPI", Version = "v1" });
             });
+
+            services.AddTransient<DataSeeder>();
+
+            // services.AddAutoMapper();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, DataSeeder seedData)
         {
             if (env.IsDevelopment())
             {
@@ -74,12 +78,15 @@ namespace server
 
             app.UseStaticFiles();
 
+            app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Employee API V1");
             });
 
             app.UseCors("CorsPolicy");
+
+            seedData.SeedData().Wait();
 
             app.UseMvc(routes => {
 
