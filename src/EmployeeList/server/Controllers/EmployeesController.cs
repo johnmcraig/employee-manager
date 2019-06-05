@@ -16,7 +16,6 @@ namespace server.Controllers
     public class EmployeesController : ControllerBase
     {
         private readonly IEmployeeRepository _repo;
-        private readonly IMapper _mapper;
 
         public EmployeesController (IEmployeeRepository repo)
         {
@@ -24,18 +23,16 @@ namespace server.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAll()
+        public async Task<ActionResult<EmployeeModel[]>> GetAll()
         {
             try
             {
                 var employees = await _repo.GettAllEmployeesAsync();
 
-                EmployeeModel[] models = Mapper.Map<EmployeeModel[]>(employees);
-
                 if(employees == null)
                     return NotFound ();
 
-                return Ok(models);
+                return Mapper.Map<EmployeeModel[]>(employees);
             } 
             catch(Exception ex)
             {
@@ -43,8 +40,8 @@ namespace server.Controllers
             }
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult> GetSingle(Guid id)
+        [HttpGet("{id:guid}")]
+        public async Task<ActionResult<EmployeeModel>> GetSingle(Guid id, bool includeEmail = false)
         {
             try
             {
@@ -53,7 +50,7 @@ namespace server.Controllers
                 if(employee == null)
                     return NotFound();
 
-                return Ok(employee);
+                return Mapper.Map<EmployeeModel>(employee);
             } 
             catch(Exception ex)
             {
