@@ -10,7 +10,6 @@
 <script>
 import EmployeeTable from '@/components/EmployeeTable.vue'
 import EmployeeForm from '@/components/EmployeeForm.vue'
-import EmployeeService from '@/services/employee-service'
 
 export default {
   name: 'app',
