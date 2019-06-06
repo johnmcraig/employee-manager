@@ -23,7 +23,7 @@ namespace server.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<EmployeeModel[]>> GetAll()
+        public async Task<ActionResult<EmployeeModel[]>> GetAll(bool includeEmail = false)
         {
             try
             {
@@ -41,7 +41,7 @@ namespace server.Controllers
         }
 
         [HttpGet("{id:guid}")]
-        public async Task<ActionResult<EmployeeModel>> GetSingle(Guid id, bool includeEmail = false)
+        public async Task<ActionResult<EmployeeModel>> GetSingle(Guid id)
         {
             try
             {
