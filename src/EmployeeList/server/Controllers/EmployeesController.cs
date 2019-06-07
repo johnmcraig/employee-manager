@@ -75,5 +75,20 @@ namespace server.Controllers
         {
 
         }
+
+        [HttpGet("search/")]
+        public async Task<ActionResult<EmployeeModel[]>> SearchByName(string searchString, bool includEmail = false)
+        {
+            try
+            {
+                var employee = await _repo.GettAllEmployeesAsync();
+
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, $"Enternal server error: {ex}");
+            }
+        }
     }
 }
