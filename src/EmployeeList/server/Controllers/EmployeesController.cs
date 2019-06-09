@@ -17,7 +17,7 @@ namespace server.Controllers
     {
         private readonly IEmployeeRepository _repo;
 
-        public EmployeesController (IEmployeeRepository repo)
+        public EmployeesController(IEmployeeRepository repo)
         {
             _repo = repo;
         }
@@ -76,14 +76,16 @@ namespace server.Controllers
 
         }
 
-        [HttpGet("search/")]
-        public async Task<ActionResult<EmployeeModel[]>> SearchByName(string searchString, bool includEmail = false)
+        [HttpGet("search")]
+        public async Task<ActionResult<EmployeeModel[]>> SearchByName(string name, bool includEmail = false)
         {
             try
             {
-                var employee = await _repo.GettAllEmployeesAsync();
+                var employee = await _repo.GetByNameAsync(name);
 
-                return Ok();
+                if(!employee.Any()) return NotFound();
+
+                return Mapper.Map<EmployeeModel[]>(employee);
             }
             catch(Exception ex)
             {
