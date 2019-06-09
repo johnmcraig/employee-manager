@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -47,6 +48,17 @@ namespace server.Data
             var employees = await _dbContex.Employees.ToArrayAsync();
 
             return employees;
+        }
+
+        public async Task<Employee[]> GetByNameAsync(string name)
+        {
+            _logger.LogInformation($"Attempting to search for names");
+
+            IQueryable<Employee> query = _dbContex.Employees;
+
+            query = query.Where(e => e != null).OrderByDescending(e => e.Name);
+
+            return await query.ToArrayAsync();
         }
 
         public async Task<bool> SaveChangesAsync()

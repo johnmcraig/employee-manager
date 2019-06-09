@@ -12,5 +12,6 @@ namespace server.Data
 
          Task<Employee[]> GettAllEmployeesAsync();
          Task<Employee> GetEmployeeAsync(Guid id);
+         Task<Employee[]> GetByNameAsync(string name);
     }
 }
