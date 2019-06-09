@@ -43,20 +43,20 @@ namespace server.Data
 
         public async Task<Employee[]> GettAllEmployeesAsync()
         {
-            _logger.LogInformation($"Gettin a all employees");
+            _logger.LogInformation($"Getting all employees");
 
-            var employees = await _dbContex.Employees.ToArrayAsync();
-
+            var employees = await _dbContex.Employees.OrderByDescending(e => e.Name).ToArrayAsync();
+                
             return employees;
         }
 
         public async Task<Employee[]> GetByNameAsync(string name)
         {
-            _logger.LogInformation($"Attempting to search for names");
+            _logger.LogInformation($"Attempting to search for name");
 
             IQueryable<Employee> query = _dbContex.Employees;
 
-            query = query.Where(e => e != null).OrderByDescending(e => e.Name);
+            query = query.OrderByDescending(e => e.Name);
 
             return await query.ToArrayAsync();
         }
