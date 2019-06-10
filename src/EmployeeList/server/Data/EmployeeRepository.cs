@@ -41,7 +41,7 @@ namespace server.Data
             return employee;
         }
 
-        public async Task<Employee[]> GettAllEmployeesAsync()
+        public async Task<Employee[]> GetAllEmployeesAsync()
         {
             _logger.LogInformation($"Getting all employees");
 

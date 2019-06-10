@@ -10,7 +10,7 @@ namespace server.Data
          void Delete<T>(T entity) where T : class;
          Task<bool> SaveChangesAsync();
 
-         Task<Employee[]> GettAllEmployeesAsync();
+         Task<Employee[]> GetAllEmployeesAsync();
          Task<Employee> GetEmployeeAsync(Guid id);
          Task<Employee[]> GetByNameAsync(string name);
     }

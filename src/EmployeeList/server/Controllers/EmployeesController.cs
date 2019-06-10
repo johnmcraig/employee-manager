@@ -27,7 +27,7 @@ namespace server.Controllers
         {
             try
             {
-                var employees = await _repo.GettAllEmployeesAsync();
+                var employees = await _repo.GetAllEmployeesAsync();
 
                 if(employees == null)
                     return NotFound ();
