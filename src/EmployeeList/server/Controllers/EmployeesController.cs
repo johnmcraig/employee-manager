@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using server.Data;
 using server.Data.Entites;
@@ -16,14 +17,16 @@ namespace server.Controllers
     public class EmployeesController : ControllerBase
     {
         private readonly IEmployeeRepository _repo;
+        private readonly LinkGenerator _linkGenerator;
 
-        public EmployeesController(IEmployeeRepository repo)
+        public EmployeesController(IEmployeeRepository repo, LinkGenerator linkGenerator)
         {
+            _linkGenerator = linkGenerator;
             _repo = repo;
         }
 
         [HttpGet]
-        public async Task<ActionResult<EmployeeModel[]>> GetAll(bool includeEmail = false)
+        public async Task<ActionResult<EmployeeModel[]>> GetAll()
         {
             try
             {
@@ -59,8 +62,25 @@ namespace server.Controllers
         }
 
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<ActionResult<EmployeeModel>> Post([FromBody] EmployeeModel model)
         {
+            try
+            {
+                var employee = Mapper.Map<Employee>(model);
+
+                _repo.Add(employee);
+
+                if(await _repo.SaveChangesAsync())
+                {
+                    return CreatedAtAction(nameof(GetSingle), new { id = employee.Id }, Mapper.Map<EmployeeModel>(employee));
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"{ex}");
+            }
+
+            return BadRequest();
 
         }
 
