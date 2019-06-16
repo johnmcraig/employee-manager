@@ -1,6 +1,6 @@
 <template>
     <div id="employee-form">
-        <b-form @submit.prevent="onSubmit">
+        <b-form @submit="onSubmit">
             <b-form-group
                 id="input-group-1"
                 label="Employee Name:"
@@ -46,9 +46,10 @@
         }
     },
     methods: {
-        onSubmit(evt) {
-            evt.preventDefualt()
-            this.$emit('add:employee', this.employee)
+        onSubmit () {
+        },
+        addEmployee () {
+
         }
     }        
 }
@@ -57,7 +58,5 @@
 <style scoped>
 form {
     margin-bottom: 2rem;
-    padding: 1rem;
-    margin: 1rem;
 }
 </style>
