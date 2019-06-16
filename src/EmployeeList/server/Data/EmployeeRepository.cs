@@ -36,9 +36,13 @@ namespace server.Data
         {
             _logger.LogInformation($"Getting a single employee by {id}");
 
-            var employee = await _dbContex.Employees.FirstOrDefaultAsync(x => x.Id == id);
+            IQueryable<Employee> query = _dbContex.Employees;
 
-            return employee;
+            query = query.Where(e => e.Id == id);
+
+            // var employee = await _dbContex.Employees.FirstOrDefaultAsync(x => x.Name == name);
+
+            return await query.FirstOrDefaultAsync();
         }
 
         public async Task<Employee[]> GetAllEmployeesAsync()
