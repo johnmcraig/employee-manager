@@ -1,9 +1,11 @@
 <template>
   <div id="app" class="small-container">
-    <h1 style="text-align:center;">Employees</h1>
-    <employee-form @add:employee="addEmployee" />
 
-    <employee-table :employee="employees"/>
+    <h1 style="text-align:center;">Employees</h1>
+
+    <employee-form />
+    <employee-table />
+
   </div>
 </template>
 
@@ -21,22 +23,15 @@ export default {
     return {
       employees: []
     }
-  },
-  methods: {
-    addEmployee(employee) {
-      this.employees = [...this.employees, employee]
-    }
   }
 }
 </script>
 
 <style>
-button {
-  background: #009435;
-  border: 1px solid #009435;
-}
-
 .small-container {
-  max-width: 670px;
+  width: 100%;
+  max-width: 720px;
+  padding: 1rem;
+  margin: 2rem;
 }
 </style>
