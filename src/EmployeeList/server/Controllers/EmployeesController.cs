@@ -17,11 +17,11 @@ namespace server.Controllers
     public class EmployeesController : ControllerBase
     {
         private readonly IEmployeeRepository _repo;
-        private readonly LinkGenerator _linkGenerator;
+        private readonly EmployeeDbContext _dbContext;
 
-        public EmployeesController(IEmployeeRepository repo, LinkGenerator linkGenerator)
+        public EmployeesController(IEmployeeRepository repo, EmployeeDbContext dbContext)
         {
-            _linkGenerator = linkGenerator;
+            _dbContext = dbContext;
             _repo = repo;
         }
 
@@ -77,7 +77,7 @@ namespace server.Controllers
                         Mapper.Map<EmployeeModel>(employee));
                 }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 return StatusCode(500, $"Enternal server error: {ex}");
             }
@@ -117,13 +117,17 @@ namespace server.Controllers
         {
             try
             {
-                var employee = _repo.GetEmployeeAsync(id);
+                // var employee = await _dbContext.Employees.FindAsync(id);
 
-                if(employee == null)
-                    return NotFound("Model not found");
+                // if(employee == null)
+                //     return NotFound("Employee not found");
 
-                _repo.Delete(employee);
+                // _dbContext.Employees.Remove(employee);
+                // await _dbContext.SaveChangesAsync();
 
+                var oldEmployee = _repo.GetEmployeeAsync(id);
+                if(oldEmployee == null) return NotFound();
+                _repo.Delete(oldEmployee);
                 if(await _repo.SaveChangesAsync())
                 {
                     return Ok();
@@ -134,7 +138,7 @@ namespace server.Controllers
                 return StatusCode(500, $"Eternal server error: {ex}");
             }
             
-            return BadRequest("Employee could not be deleted");
+            return Ok();
         }
 
         [HttpGet("search")]
