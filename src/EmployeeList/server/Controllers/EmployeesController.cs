@@ -117,27 +117,28 @@ namespace server.Controllers
         {
             try
             {
-                // var employee = await _dbContext.Employees.FindAsync(id);
+                var employee = await _dbContext.Employees.FindAsync(id);
 
-                // if(employee == null)
-                //     return NotFound("Employee not found");
+                if(employee == null) return NotFound("Employee not found");
 
-                // _dbContext.Employees.Remove(employee);
-                // await _dbContext.SaveChangesAsync();
-
-                var oldEmployee = _repo.GetEmployeeAsync(id);
-                if(oldEmployee == null) return NotFound();
-                _repo.Delete(oldEmployee);
-                if(await _repo.SaveChangesAsync())
-                {
-                    return Ok();
-                }
+                _dbContext.Employees.Remove(employee);
+                await _dbContext.SaveChangesAsync();
+                
+                // issue with repository with model binding passing into method for Delete<T>(T entity)
+                // var oldEmployee = _repo.GetEmployeeAsync(id);
+                // if(oldEmployee == null) return NotFound();
+                // _repo.Delete(oldEmployee);
+                // if(await _repo.SaveChangesAsync())
+                // {
+                //     return Ok();
+                // }
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Eternal server error: {ex}");
             }
             
+            //return BadRequest();
             return Ok();
         }
 
