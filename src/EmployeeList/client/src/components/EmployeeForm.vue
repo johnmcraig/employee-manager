@@ -7,11 +7,11 @@
                 label-for="input-1">
                 
                 <b-form-input 
-                id="input-1"
-                v-model="employee.name"
-                type="text"
-                required
-                placeholder="Enter name">
+                    id="input-1"
+                    v-model="employee.name"
+                    type="text"
+                    required
+                    placeholder="Enter name">
                 </b-form-input>
                 
             </b-form-group>

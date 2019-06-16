@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="small-container">
-    <h1>Employees</h1>
+    <h1 style="text-align:center;">Employees</h1>
     <employee-form @add:employee="addEmployee" />
 
     <employee-table :employee="employees"/>
