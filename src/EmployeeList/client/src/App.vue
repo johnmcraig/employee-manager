@@ -6,6 +6,8 @@
     <employee-form />
     <employee-table />
 
+    <router-view />
+
   </div>
 </template>
 
