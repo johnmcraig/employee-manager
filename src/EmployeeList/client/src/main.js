@@ -4,6 +4,7 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue'
 import Axios from 'axios'
+import router from './router'
 
 Vue.config.productionTip = false
 
@@ -13,4 +14,5 @@ Vue.use(BootstrapVue)
 
 new Vue({
   render: h => h(App),
+  router
 }).$mount('#app')
