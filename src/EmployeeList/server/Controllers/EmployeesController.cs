@@ -124,7 +124,7 @@ namespace server.Controllers
                 _dbContext.Employees.Remove(employee);
                 await _dbContext.SaveChangesAsync();
                 
-                // issue with repository with model binding passing into method for Delete<T>(T entity)
+                // issue in repository with model binding passing into method for Delete<T>(T entity)
                 // var oldEmployee = _repo.GetEmployeeAsync(id);
                 // if(oldEmployee == null) return NotFound();
                 // _repo.Delete(oldEmployee);
