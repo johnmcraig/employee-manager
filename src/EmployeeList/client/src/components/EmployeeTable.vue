@@ -67,7 +67,7 @@ export default {
   },
   methods: {
     detailsEmployee(employeeId) {
-        this.$router.push({ name: 'EmployeeDetails', params: { id: employeeId } });
+        this.$router.push({ name: 'EmployeeDetails', params: { id: employeeId } })
         console.log('details', employeeId)
     },
     editEmployee(employeeId) {
