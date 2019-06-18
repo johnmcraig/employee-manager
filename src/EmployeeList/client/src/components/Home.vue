@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import EmployeeTable from '@/components/EmployeeTable.vue'
-import EmployeeForm from '@/components/EmployeeForm.vue'
+import EmployeeTable from '@/components/employees/EmployeeTable.vue'
+import EmployeeForm from '@/components/employees/EmployeeForm.vue'
 
 export default {
     name: 'Home',
@@ -19,6 +19,11 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-
+<style scoped>
+.small-container {
+  width: 100%;
+  max-width: 720px;
+  padding: 1rem;
+  margin: 2rem;
+}
 </style>
