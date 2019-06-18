@@ -1,15 +1,19 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-import App from './App'
+import VueRouter from 'vue-router'
+import Home from '@/components/Home'
 import EmployeeDetails from '@/components/employees/EmployeeDetails'
+import EmployeeForm from '@/components/employees/EmployeeForm'
+import EmployeeTable from '@/components/employees/EmployeeTable'
 import NotFound from '@/components/error-pages/NotFound'
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
-export default new Router({
+export default new VueRouter({
     mode: 'history',
     routes: [
-    { path: '/', name: 'employee-form', component: App },
+    { path: '/', name: 'Home', component: Home },
+    { path: '/employee/form', name: 'EmployeeForm', component: EmployeeForm },
+    { path: '/employee/table', name: 'EmployeeTable', component: EmployeeTable },
     { path: '/employee/:id', name: 'EmployeeDetails', component: EmployeeDetails },
     { path: '*', name: 'Not Found', component: NotFound }
   ]
