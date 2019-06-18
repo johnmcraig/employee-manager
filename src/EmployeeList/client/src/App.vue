@@ -1,25 +1,33 @@
 <template>
-  <div id="app" class="small-container">
-
+  <!-- <div id="app" class="small-container">
     <h1 style="text-align:center;">Employees</h1>
-
     <employee-form />
     <employee-table />
-
     <router-view />
-
-  </div>
+  </div> -->
+  <b-container id="app">
+    <b-row>
+      <b-col>
+        <navbar/>
+      </b-col>
+    </b-row>
+    <b-row>
+      <b-col>
+        <router-view />
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
-import EmployeeTable from '@/components/EmployeeTable.vue'
-import EmployeeForm from '@/components/EmployeeForm.vue'
+// import EmployeeTable from '@/components/EmployeeTable.vue'
+// import EmployeeForm from '@/components/EmployeeForm.vue'
+import Navbar from '@/components/ui/Navbar'
 
 export default {
   name: 'app',
   components: {
-    EmployeeTable,
-    EmployeeForm
+    Navbar
   },
   data () {
     return {
@@ -30,10 +38,4 @@ export default {
 </script>
 
 <style>
-.small-container {
-  width: 100%;
-  max-width: 720px;
-  padding: 1rem;
-  margin: 2rem;
-}
 </style>
