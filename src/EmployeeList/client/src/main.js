@@ -13,6 +13,6 @@ Axios.defaults.baseURL = 'https://localhost:5001/api'
 Vue.use(BootstrapVue)
 
 new Vue({
+  router,
   render: h => h(App),
-  router
 }).$mount('#app')
