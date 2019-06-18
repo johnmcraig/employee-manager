@@ -2,6 +2,7 @@
     <div class="small-container">
         <h1 style="text-align:center;">Employees</h1>
         <employee-form />
+        <employee-table />
     </div>
 </template>
 
