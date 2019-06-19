@@ -99,7 +99,7 @@ export default {
         }
     },
     created() {
-        OwnerService.get(this.$router.currentRoute.params.id).then((response) => {
+        EmployeeService.getSingle(this.$router.currentRoute.params.id).then((response) => {
             this.formData.name = response.data.name
             this.formData.position = response.data.position
             this.formData.startDate = response.data.startDate.split('T')[0]
@@ -130,5 +130,19 @@ export default {
 </script>
 
 <style scoped>
+form {
+    margin-bottom: 2rem;
+    margin-top: 20px;
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+}
 
+button {
+    margin: 1rem;
+}
 </style>
