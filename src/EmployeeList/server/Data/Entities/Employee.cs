@@ -14,5 +14,11 @@ namespace server.Data.Entites
         
         [Required(ErrorMessage = "A valid email is required")]
         public string Email { get; set; }
+        
+        public string Position { get; set; }
+
+        public DateTime StartDate { get; set; }
+
+        public bool isCurrent { get; set; }
     }
 }
