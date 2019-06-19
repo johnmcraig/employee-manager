@@ -1,6 +1,7 @@
 <template>
-    <div id="employee-form">
-        <b-form @submit="onSubmit">
+    <b-container fluid>
+
+        <b-form @submit.prevent="addEmployee">
             <b-form-group
                 id="input-group-1"
                 label="Employee Name:"
@@ -32,8 +33,9 @@
             </b-form-group>
 
             <b-button type="submit" variant="primary">Add Employee</b-button>
+            <b-button :to="{ name: 'Home'}" variant="danger">Cancel</b-button>
         </b-form>
-    </div>
+    </b-container>
 </template>
 
 <script>
