@@ -33,19 +33,28 @@ namespace server.Data
                 {
                    Id = Guid.NewGuid(),
                    Name = "Richard Hendricks",
-                   Email = "contact@richardhendrinks.com"
+                   Email = "contact@richardhendrinks.com",
+                   Position = "Sales",
+                   StartDate = DateTime.Now,
+                   isCurrent = true
                },
                new Employee
                {
                    Id = Guid.NewGuid(),
                    Name = "Bertram Gilfoye",
-                   Email = "contact@bertramgilfoye.com"
+                   Email = "contact@bertramgilfoye.com",
+                   Position = "HR Manager",
+                   StartDate = DateTime.Now,
+                   isCurrent = true
                },
                new Employee
                {
                    Id = Guid.NewGuid(),
                    Name = "Denish Chugtai",
-                   Email = "contact@denishchutai.com"
+                   Email = "contact@denishchutai.com",
+                   Position = "Data Analyst",
+                   StartDate = DateTime.Now,
+                   isCurrent = false
                }
             };
 
