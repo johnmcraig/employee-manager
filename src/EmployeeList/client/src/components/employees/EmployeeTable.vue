@@ -1,6 +1,13 @@
 <template>
   <div id="employee-table">
     <b-row>
+      <b-col
+        md="2"
+        offset-md="10">
+        <router-link :to="{ name: 'EmployeeForm' }">Add Employee</router-link>
+      </b-col>
+    </b-row>
+    <b-row>
       <b-col md="12">
         <div class="table-responsive">
           <table class="table table-striped">
@@ -67,16 +74,16 @@ export default {
   },
   methods: {
     detailsEmployee(employeeId) {
-        this.$router.push({ name: 'EmployeeDetails', params: { id: employeeId } })
-        console.log('details', employeeId)
+      this.$router.push({ name: 'EmployeeDetails', params: { id: employeeId } })
+      console.log('details', employeeId)
     },
     editEmployee(employeeId) {
-        console.log('edit', employeeId)
+      console.log('edit', employeeId)
     },
     deleteEmployee(employeeId) {
-        console.log('delete', employeeId)
-    //   this.selectedEmployeeId = employeeId
-    //   this.$refs.deleteConfirmModal.show()
+      console.log('delete', employeeId)
+      this.selectedEmployeeId = employeeId
+      this.$refs.deleteConfirmModal.show()
     },
     fetchEmployees() {
       EmployeeService.getAll().then(response => {
@@ -85,7 +92,7 @@ export default {
     },
       onDeleteConfirm () {
       EmployeeService.delete(this.selectedEmployeeId).then(() => {
-        this.alertModalTitle = 'Successfully';
+        this.alertModalTitle = 'Success!';
         this.alertModalContent = 'Successfully deleted Employee';
         this.$refs.alertModal.show();
         this.fetchEmployees();
@@ -97,6 +104,11 @@ export default {
     },
     onDeleteModalHide () {
       this.selectedEmployeeId = null;
+    },
+    onEditConfirm () {
+      EmployeeService.put(this.selectedEmployeeId).then(() => {
+
+      })
     }
   }
 }
