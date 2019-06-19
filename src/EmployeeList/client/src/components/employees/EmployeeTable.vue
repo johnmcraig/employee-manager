@@ -91,7 +91,7 @@ export default {
         this.employees = response.data
       })
     },
-      onDeleteConfirm () {
+    onDeleteConfirm () {
       EmployeeService.delete(this.selectedEmployeeId).then(() => {
         this.alertModalTitle = 'Success!';
         this.alertModalContent = 'Successfully deleted Employee';
