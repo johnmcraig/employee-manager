@@ -36,10 +36,10 @@
 
     <b-modal
       ref="deleteConfirmModal"
-      title="Confirm your action"
+      title="Confirm Deletion!"
       @ok="onDeleteConfirm"
       @hide="onDeleteModalHide">
-      <p class="my-4">Are you sure you want to delete this owner?</p>
+      <p class="my-4">Are you sure you want to delete this employee?</p>
     </b-modal>
  
     <b-modal
