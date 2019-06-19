@@ -78,6 +78,7 @@ export default {
       console.log('details', employeeId)
     },
     editEmployee(employeeId) {
+      this.$router.push({ name: 'EmployeeUpdate', params: { id: employeeId } })
       console.log('edit', employeeId)
     },
     deleteEmployee(employeeId) {
@@ -104,11 +105,6 @@ export default {
     },
     onDeleteModalHide () {
       this.selectedEmployeeId = null;
-    },
-    onEditConfirm () {
-      EmployeeService.put(this.selectedEmployeeId).then(() => {
-
-      })
     }
   }
 }
