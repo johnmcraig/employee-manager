@@ -1,18 +1,20 @@
 <template>
     <div class="container">
         <h2 style="text-align:center;">Welcome to the Employee Entry Form</h2>
-
+        <br />
         <div class="row">
-            <div class="col col-md-12">
-                <h3>Add New Employees to the Database:</h3>
-                <p>Navigate and fill in the form to add an entry - link here.</p>
+            <div class="col col-lg-12">
+                <h3>Add Employees to the Database</h3>
+                <p>Navigate to the employee form - <router-link to="/employee/form">Go to Employee Form.</router-link></p>
+                <p>Enter form data to add an entry.</p>
             </div>
         </div>
 
         <div class="row">
-            <div class="col col-md-12">
-                <h3>See the already existing employees:</h3>
-                <p>Use the button links on the tables to see additional options to edit or delete an entry - link here</p>
+            <div class="col col-lg-12">
+                <h3>View the Already Existing Employees</h3>
+                <p>Navigate to see all current employees - <router-link to="/employee/table">Go to Employee Table.</router-link></p>
+                <p>Use the button links on the table to see additional details, edit, or delete an entry.</p>
             </div>
         </div>
 
@@ -30,8 +32,7 @@ export default {
 <style scoped>
 .container {
   width: 100%;
-  max-width: 678px;
-  padding: .5rem;
-  margin: 1rem;
+  padding: 0.5rem;
+  margin: 2rem;
 }
 </style>
