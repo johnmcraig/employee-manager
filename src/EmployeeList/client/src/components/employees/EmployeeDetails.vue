@@ -25,14 +25,16 @@
           <table class="table table-striped">
             <thead>
               <tr>
-                <th>Account type</th>
-                <th>Date created</th>
+                <th>Currently Employed?</th>
+                <th>Start Date</th>
+                <th>Position</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Placeholder</td>
-                <td>Placeholder</td>
+                <td>{{ employee.isCurrent }}</td>
+                <td>{{ employee.startDate }}</td>
+                <td>{{ employee.position }}</td>
               </tr>
             </tbody>
           </table>
@@ -55,7 +57,7 @@ export default {
     created () {
         EmployeeService.getSingle(this.$router.currentRoute.params.id)
         .then(response => {
-        this.owner = response.data
+        this.employee = response.data
         })
     }  
 }
