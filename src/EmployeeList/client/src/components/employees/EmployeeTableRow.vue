@@ -3,7 +3,7 @@
     <td>{{ employee.name }}</td>
     <td>{{ employee.email }}</td>
     <td>
-      <b-button variant="success" @click="onDetailsClick">Details</b-button>
+      <b-button variant="secondary" @click="onDetailsClick">Details</b-button>
     </td>
     <td>
       <b-button variant="success" @click="onEditClick">Edit</b-button>
