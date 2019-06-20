@@ -25,14 +25,12 @@
           <table class="table table-striped">
             <thead>
               <tr>
-                <th>Currently Employed?</th>
                 <th>Start Date</th>
                 <th>Position</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>{{ employee.isCurrent }}</td>
                 <td>{{ employee.startDate }}</td>
                 <td>{{ employee.position }}</td>
               </tr>
