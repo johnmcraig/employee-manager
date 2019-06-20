@@ -35,8 +35,7 @@ namespace server.Data
                    Name = "Richard Hendricks",
                    Email = "contact@richardhendrinks.com",
                    Position = "Sales",
-                   StartDate = DateTime.Now,
-                   isCurrent = true
+                   StartDate = DateTime.Now
                },
                new Employee
                {
@@ -44,8 +43,7 @@ namespace server.Data
                    Name = "Bertram Gilfoye",
                    Email = "contact@bertramgilfoye.com",
                    Position = "HR Manager",
-                   StartDate = DateTime.Now,
-                   isCurrent = true
+                   StartDate = DateTime.Now
                },
                new Employee
                {
@@ -53,8 +51,7 @@ namespace server.Data
                    Name = "Denish Chugtai",
                    Email = "contact@denishchutai.com",
                    Position = "Data Analyst",
-                   StartDate = DateTime.Now,
-                   isCurrent = false
+                   StartDate = DateTime.Now
                }
             };
 
