@@ -55,10 +55,10 @@ export default {
         }
     },
     created () {
-        EmployeeService.getSingle(this.$router.currentRoute.params.id)
+      EmployeeService.getSingle(this.$router.currentRoute.params.id)
         .then(response => {
         this.employee = response.data
-        })
+      })
     }  
 }
 </script>
