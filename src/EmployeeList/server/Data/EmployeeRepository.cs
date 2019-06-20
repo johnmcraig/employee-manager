@@ -54,17 +54,6 @@ namespace server.Data
             return employees;
         }
 
-        public async Task<Employee[]> GetByNameAsync(string name)
-        {
-            _logger.LogInformation($"Attempting to search for name");
-
-            IQueryable<Employee> query = _dbContex.Employees;
-
-            query = query.OrderByDescending(e => e.Name);
-
-            return await query.ToArrayAsync();
-        }
-
         public async Task<bool> SaveChangesAsync()
         {
             _logger.LogInformation($"Attempting to save changesd to the context.");
