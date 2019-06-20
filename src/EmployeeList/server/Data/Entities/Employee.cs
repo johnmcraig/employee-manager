@@ -18,7 +18,5 @@ namespace server.Data.Entites
         public string Position { get; set; }
 
         public DateTime StartDate { get; set; }
-
-        public bool isCurrent { get; set; }
     }
 }
