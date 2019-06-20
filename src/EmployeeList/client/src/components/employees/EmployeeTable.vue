@@ -75,16 +75,16 @@ export default {
   methods: {
     detailsEmployee(employeeId) {
       this.$router.push({ name: 'EmployeeDetails', params: { id: employeeId } })
-      console.log('details', employeeId)
+      // console.log('details', employeeId)
     },
     editEmployee(employeeId) {
       this.$router.push({ name: 'EmployeeUpdate', params: { id: employeeId } })
-      console.log('edit', employeeId)
+      // console.log('edit', employeeId)
     },
     deleteEmployee(employeeId) {
-      console.log('delete', employeeId)
       this.selectedEmployeeId = employeeId
       this.$refs.deleteConfirmModal.show()
+      // console.log('delete', employeeId)
     },
     fetchEmployees() {
       EmployeeService.getAll().then(response => {
