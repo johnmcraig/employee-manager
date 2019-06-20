@@ -108,7 +108,7 @@ export default {
     },
     methods: {
         updateEmployee () {
-            EmployeeService.update(this.$router.params.id, this.formData).then(() => {
+            EmployeeService.update(this.$router.currentRoute.params.id, this.formData).then(() => {
                 this.isSuccessfull = true
                 this.alertModalTitle = 'Success!';
                 this.alertModalContent = 'Successfully Updated Employee';
