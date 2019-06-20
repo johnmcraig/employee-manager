@@ -87,28 +87,38 @@ namespace server.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<EmployeeModel>> Put(Guid id, [FromBody] EmployeeModel model)
+        public async Task<ActionResult<EmployeeModel>> Put(Guid id, Employee employee)
         {
             try
-            {
-                var oldEmployee = _repo.GetEmployeeAsync(model.Id);
-
-                if(model == null) 
-                    return NotFound($"Could not find employee with {id}");
-
-                await Mapper.Map(model, oldEmployee);
-
-                if(await _repo.SaveChangesAsync())
+            {   
+                if (id != employee.Id)
                 {
-                    return Mapper.Map<EmployeeModel>(oldEmployee);
+                    return BadRequest();
                 }
+
+                _dbContext.Entry(employee).State = EntityState.Modified;
+                await _dbContext.SaveChangesAsync();
+
+                return NoContent();
+
+                // var oldEmployee = _repo.GetEmployeeAsync(id);
+
+                // if(model == null) 
+                //     return NotFound($"Could not find employee with {id}");
+
+                // await Mapper.Map(model, oldEmployee);
+
+                // if(await _repo.SaveChangesAsync())
+                // {
+                //     return Mapper.Map<EmployeeModel>(oldEmployee);
+                // }
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Enternal server error: {ex}");
             }
 
-            return BadRequest();
+            // return BadRequest();
 
         }
 
@@ -140,23 +150,6 @@ namespace server.Controllers
             
             //return BadRequest();
             return Ok();
-        }
-
-        [HttpGet("search")]
-        public async Task<ActionResult<EmployeeModel>> SearchByName(string name, bool includEmail = false)
-        {
-            try
-            {
-                var employee = await _repo.GetByNameAsync(name);
-
-                if(!employee.Any()) return NotFound();
-
-                return Mapper.Map<EmployeeModel>(employee);
-            }
-            catch(Exception ex)
-            {
-                return StatusCode(500, $"Enternal server error: {ex}");
-            }
         }
     }
 }
