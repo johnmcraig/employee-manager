@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.AspNetCore.Mvc.Versioning.Conventions;
 using Microsoft.AspNetCore.SpaServices.Webpack;
@@ -47,9 +48,23 @@ namespace server
             services.AddMvc(opt => opt.EnableEndpointRouting = false)
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddSwaggerGen(c =>
+            services.AddMvcCore().AddApiExplorer();
+
+            services.AddVersionedApiExplorer(options => options.GroupNameFormat = "'v'VVV" );
+
+            services.AddSwaggerGen(options => 
             {
-                c.SwaggerDoc("v1", new Info { Title = "EmployeeAPI", Version = "v1" });
+                var provider = services.BuildServiceProvider()
+                    .GetRequiredService<IApiVersionDescriptionProvider>();
+
+                    foreach (var description in provider.ApiVersionDescriptions)
+                    {
+                        options.SwaggerDoc(description.GroupName, new Info
+                        { 
+                            Title = $"Sample API {description.ApiVersion}", 
+                            Version = description.ApiVersion.ToString() 
+                        });
+                    }
             });
 
             services.AddApiVersioning(
@@ -57,7 +72,7 @@ namespace server
                     options.ReportApiVersions = true;
                     options.AssumeDefaultVersionWhenUnspecified = true;
                     options.Conventions.Add( new VersionByNamespaceConvention());
-                    options.DefaultApiVersion = new ApiVersion(1, 1);
+                    options.DefaultApiVersion = new ApiVersion(1, 0);
                     options.ApiVersionReader = new HeaderApiVersionReader("api-version");
             });
 
@@ -66,7 +81,7 @@ namespace server
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, DataSeeder seedData)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, DataSeeder seedData, IApiVersionDescriptionProvider provider)
         {
             if (env.IsDevelopment())
             {
@@ -88,9 +103,13 @@ namespace server
             app.UseStaticFiles();
 
             app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Employee API V1");
+            app.UseSwaggerUI(options => {
+                foreach (var description in provider.ApiVersionDescriptions)
+                {
+                    options.SwaggerEndpoint(
+                        $"/swagger/{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
+
+                }
             });
 
             app.UseCors("CorsPolicy");
