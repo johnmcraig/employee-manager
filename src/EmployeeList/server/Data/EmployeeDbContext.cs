@@ -19,5 +19,12 @@ namespace server.Data
         {
             optionsBuilder.UseInMemoryDatabase("Employees");
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Employee>();
+        }
     }
 }
