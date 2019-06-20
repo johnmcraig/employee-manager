@@ -102,7 +102,7 @@ export default {
         EmployeeService.getSingle(this.$router.currentRoute.params.id).then((response) => {
             this.formData.name = response.data.name
             this.formData.position = response.data.position
-            this.formData.startDate = response.data.startDate.split('T')[0]
+            this.formData.startDate = response.data.startDate
             this.formData.email = response.data.email
         })
     },
@@ -110,8 +110,8 @@ export default {
         updateEmployee () {
             EmployeeService.update(this.$router.currentRoute.params.id, this.formData).then(() => {
                 this.isSuccessfull = true
-                this.alertModalTitle = 'Success!';
-                this.alertModalContent = 'Successfully Updated Employee';
+                this.alertModalTitle = 'Success!'
+                this.alertModalContent = 'Successfully Updated Employee'
                 this.$refs.alertModal.show()
             }).catch((error) => {
                 this.isSuccessfull = false
@@ -122,7 +122,7 @@ export default {
         },
         onAlertModalOkClick () {
             if (this.isSuccessfull) {
-                this.$router.push({ name: 'EmployeeTable' })
+                this.$router.push({ name: 'EmployeeTable', params: { id: employeeId } })
             }
         }
     }
