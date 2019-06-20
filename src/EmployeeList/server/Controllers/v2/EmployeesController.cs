@@ -12,7 +12,8 @@ using server.Models;
 
 namespace server.Controllers
 {
-    [Route ("api/[controller]")]
+    [ApiVersion("2.0")]
+    [Route ("api/v{version:apiVersion}/[controller]")]
     [ApiController]
     public class EmployeesController : ControllerBase
     {
@@ -44,7 +45,7 @@ namespace server.Controllers
         }
 
         [HttpGet("{id:guid}")]
-        public async Task<ActionResult<EmployeeModel>> GetSingle(Guid id)
+        public async Task<ActionResult<EmployeeModel>> GetEmployee(Guid id)
         {
             try
             {
@@ -72,7 +73,7 @@ namespace server.Controllers
 
                 if(await _repo.SaveChangesAsync())
                 {
-                    return CreatedAtAction(nameof(GetSingle), 
+                    return CreatedAtAction(nameof(GetEmployee), 
                         new { id = employee.Id },
                         Mapper.Map<EmployeeModel>(employee));
                 }
@@ -87,13 +88,13 @@ namespace server.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<EmployeeModel>> Put(Guid id, Employee employee)
+        public async Task<IActionResult> Put(Guid id, Employee employee)
         {
             try
             {   
                 if (id != employee.Id)
                 {
-                    return BadRequest();
+                    return BadRequest($"Could not find employee by {id}");
                 }
 
                 _dbContext.Entry(employee).State = EntityState.Modified;
