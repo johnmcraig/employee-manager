@@ -1,7 +1,9 @@
 <template>
-    <div>
-        <p>404 Not Found :(</p>
-    </div>
+    <b-container>
+        <b-row>
+            <p>404 Not Found :(</p>
+        </b-row>
+    </b-container>
 </template>
 
 <script>
