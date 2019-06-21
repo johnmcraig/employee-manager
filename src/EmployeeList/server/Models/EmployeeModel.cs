@@ -16,6 +16,8 @@ namespace server.Models
 
         public string Position { get; set; }
 
+        [DataType(DataType.Date)]  
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)] 
         public DateTime StartDate { get; set; }
     }
 }
