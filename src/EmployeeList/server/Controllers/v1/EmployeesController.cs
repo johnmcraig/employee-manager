@@ -50,7 +50,6 @@ namespace server.Controllers.v1
             }
             catch (Exception ex)
             {
-                
                 return StatusCode(500, $"Enternal server Error: {ex}");
             }
         }
@@ -76,21 +75,26 @@ namespace server.Controllers.v1
         }
 
         [HttpPut("{id:guid}", Name = nameof(UpdateEmployee))]
-        public async Task<IActionResult> UpdateEmployee(Guid id, [FromBody] Employee employee) 
-        { 
+        public async Task<IActionResult> UpdateEmployee( Guid id, Employee employee) 
+        {   
+            if(!ModelState.IsValid) 
+                return BadRequest(ModelState);
+
+            if(id != employee.Id) 
+                return BadRequest($"Could not find employee by id: {id}");
+
+            _dbContext.Entry(employee).State = EntityState.Modified;
+            
             try
             {
-                if(id != employee.Id) return BadRequest($"Could not find employee by id:{id}");
-
-                _dbContext.Entry(employee).State = EntityState.Modified;
                 await _dbContext.SaveChangesAsync();
-
-                return NoContent();
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Enternal server Error: {ex}");
             }
+
+            return NoContent();
         }
 
         [HttpDelete("{id:guid}", Name = nameof(DeleteEmployee))]
