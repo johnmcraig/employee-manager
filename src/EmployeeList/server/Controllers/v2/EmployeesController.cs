@@ -88,38 +88,28 @@ namespace server.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(Guid id, Employee employee)
+        public async Task<ActionResult<EmployeeModel>> Put(Guid id, EmployeeModel model)
         {
             try
-            {   
-                if (id != employee.Id)
+            {
+                var oldEmployee = _repo.GetEmployeeAsync(id);
+
+                if(model == null) 
+                    return NotFound($"Could not find employee with {id}");
+
+                await Mapper.Map(model, oldEmployee);
+
+                if(await _repo.SaveChangesAsync())
                 {
-                    return BadRequest($"Could not find employee by {id}");
+                    return Mapper.Map<EmployeeModel>(oldEmployee);
                 }
-
-                _dbContext.Entry(employee).State = EntityState.Modified;
-                await _dbContext.SaveChangesAsync();
-
-                return NoContent();
-
-                // var oldEmployee = _repo.GetEmployeeAsync(id);
-
-                // if(model == null) 
-                //     return NotFound($"Could not find employee with {id}");
-
-                // await Mapper.Map(model, oldEmployee);
-
-                // if(await _repo.SaveChangesAsync())
-                // {
-                //     return Mapper.Map<EmployeeModel>(oldEmployee);
-                // }
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Enternal server error: {ex}");
             }
 
-            // return BadRequest();
+            return BadRequest();
 
         }
 
@@ -127,30 +117,25 @@ namespace server.Controllers
         public async Task<IActionResult> Delete(Guid id) 
         {
             try
-            {
-                var employee = await _dbContext.Employees.FindAsync(id);
-
-                if(employee == null) return NotFound("Employee not found");
-
-                _dbContext.Employees.Remove(employee);
-                await _dbContext.SaveChangesAsync();
-                
+            {   
                 // issue in repository with model binding passing into method for Delete<T>(T entity)
-                // var oldEmployee = _repo.GetEmployeeAsync(id);
-                // if(oldEmployee == null) return NotFound();
-                // _repo.Delete(oldEmployee);
-                // if(await _repo.SaveChangesAsync())
-                // {
-                //     return Ok();
-                // }
+                var oldEmployee = _repo.GetEmployeeAsync(id);
+
+                if(oldEmployee == null) return NotFound();
+                
+                _repo.Delete(oldEmployee);
+                
+                if(await _repo.SaveChangesAsync())
+                {
+                    return Ok();
+                }
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Eternal server error: {ex}");
             }
             
-            //return BadRequest();
-            return Ok();
+            return BadRequest();
         }
     }
 }
