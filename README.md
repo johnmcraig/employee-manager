@@ -42,9 +42,22 @@ For server side code, build and restore dependecies and NuGet packages:
 ~$ dotnet restore
 ```
 
-# TODO
+## Running the Environment
+To run a local environment on the client side:
+Use `npm` script commands in a terminal/command box while in the `../client` directory:
+```sh
+~$ npm run watch
+```
+This outputs a minified JavaScript file in the `wwwroot/dist` directory of the API.
+
+To run a local environment on the server side:
+Use the `dotnet <COMMAND> <OPTIONS>` tool to run it in a terminal or use Visual Studio to run it with `CTL` + `F5`
+
+Navigate to localhost:5001 in a browser to see the current build running.
+
+## TODO
 - Add Authorization and Login.
 - Enable searching by Employee name.
 
-# Known Issues and Bugs
+## Known Issues and Bugs
 - The delete action in the controller class has an issue with binding the model with the repository delete method, so it is using the context class instead.
