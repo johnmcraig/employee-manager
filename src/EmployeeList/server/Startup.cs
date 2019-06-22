@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
@@ -100,6 +101,10 @@ namespace server
 
             app.UseHttpsRedirection();
 
+            app.UseForwardedHeaders(new ForwardedHeadersOptions {
+                ForwardedHeaders = ForwardedHeaders.All
+            });
+
             app.UseStaticFiles();
 
             app.UseSwagger();
@@ -107,8 +112,8 @@ namespace server
                 foreach (var description in provider.ApiVersionDescriptions)
                 {
                     options.SwaggerEndpoint(
-                        $"/swagger/{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
-
+                        $"/swagger/{description.GroupName}/swagger.json",
+                         description.GroupName.ToUpperInvariant());
                 }
             });
 
