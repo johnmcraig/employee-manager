@@ -17,14 +17,24 @@ namespace server.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseInMemoryDatabase("Employees");
+            optionsBuilder.UseSqlServer(_config.GetConnectionString("DefaultConnection"));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Employee>();
+            modelBuilder.Entity<Employee>().ToTable("Employees");
+
+            modelBuilder.Entity<Employee>()
+                .Property(employee => employee.Name)
+                .HasMaxLength(100)
+                .IsRequired();
+            
+            modelBuilder.Entity<Employee>()
+                .Property(employee => employee.Email)
+                .HasMaxLength(150)
+                .IsRequired();
         }
     }
 }
