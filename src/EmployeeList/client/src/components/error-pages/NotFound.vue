@@ -1,5 +1,5 @@
 <template>
-    <b-container>
+<b-container>
         <b-row>
             <p>404 Not Found :(</p>
         </b-row>
@@ -8,9 +8,14 @@
 
 <script>
 export default {
-    name: 'NotFound'
+    name: 'Notfound'
 }
 </script>
 
-<style>
+<style scoped>
+p {
+    font-weight: bold;
+    font-size: 50px;
+    text-align: center;
+}
 </style>
