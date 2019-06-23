@@ -35,15 +35,15 @@ namespace server.Data
                    Name = "Richard Hendricks",
                    Email = "contact@richardhendrinks.com",
                    Position = "Sales",
-                   StartDate = DateTime.Now
-               },
+                   StartDate = new System.DateTime(2014, 04, 22)
+                },
                new Employee
                {
                    Id = Guid.NewGuid(),
                    Name = "Bertram Gilfoye",
                    Email = "contact@bertramgilfoye.com",
                    Position = "HR Manager",
-                   StartDate = DateTime.Now
+                   StartDate = new System.DateTime(2015, 06, 12)
                },
                new Employee
                {
@@ -51,7 +51,7 @@ namespace server.Data
                    Name = "Denish Chugtai",
                    Email = "contact@denishchutai.com",
                    Position = "Data Analyst",
-                   StartDate = DateTime.Now
+                   StartDate = new System.DateTime(2016, 06, 20)
                }
             };
 
