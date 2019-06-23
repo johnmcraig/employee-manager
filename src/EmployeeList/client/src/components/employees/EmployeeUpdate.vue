@@ -1,6 +1,15 @@
 <template>
     <b-container fluid>
+        <b-row>
+      <b-col
+        md="2"
+        offset-md="10">
+        <router-link :to="{ name: 'EmployeeTable' }">Back to Table</router-link>
+      </b-col>
+    </b-row>
 
+    <b-row>
+      <b-col md="12">
         <b-form @submit.prevent="updateEmployee">
             <b-form-group
                 id="input-group-1"
@@ -68,6 +77,8 @@
             </b-col>
 
         </b-form>
+      </b-col>
+    </b-row>
 
     <b-modal
       ref="alertModal"
