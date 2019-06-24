@@ -55,7 +55,7 @@ namespace server.Controllers.v1
         }
 
         [HttpPost(Name = nameof(AddEmployee))]
-        public async Task<ActionResult<Employee>> AddEmployee(Employee employee) 
+        public async Task<ActionResult<Employee>> AddEmployee([FromBody] Employee employee) 
         { 
             try
             {
@@ -74,19 +74,23 @@ namespace server.Controllers.v1
             }
         }
 
-        [HttpPut("{id:guid}", Name = nameof(UpdateEmployee))]
-        public async Task<IActionResult> UpdateEmployee( Guid id, Employee employee) 
+        [HttpPut("{id}", Name = nameof(UpdateEmployee))]
+        public async Task<IActionResult> UpdateEmployee(Guid id, [FromBody] Employee employee)
         {   
-            if(!ModelState.IsValid) 
-                return BadRequest(ModelState);
-
-            if(id != employee.Id) 
-                return BadRequest($"Could not find employee by id: {id}");
-
-            _dbContext.Entry(employee).State = EntityState.Modified;
-            
             try
             {
+                if(!ModelState.IsValid) 
+                    return BadRequest(ModelState);
+
+                if(id != employee.Id)
+                    return NotFound($"Could not find employee by id: {id}");
+                
+                var dbEmployee = await _dbContext.Employees.FirstOrDefaultAsync(e => e.Id == id);
+                // dbEmployee.Map(employee);
+
+                // _dbContext.Update( employee);
+                _dbContext.Entry(employee).State = EntityState.Modified;
+
                 await _dbContext.SaveChangesAsync();
             }
             catch (Exception ex)
@@ -97,7 +101,8 @@ namespace server.Controllers.v1
             return NoContent();
         }
 
-        [HttpDelete("{id:guid}", Name = nameof(DeleteEmployee))]
+        [HttpDelete("{id}", Name = nameof(DeleteEmployee))]
+        // [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteEmployee(Guid id) 
         { 
             try
