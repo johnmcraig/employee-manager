@@ -85,12 +85,7 @@ namespace server.Controllers.v1
                 if(id != employee.Id)
                     return NotFound($"Could not find employee by id: {id}");
                 
-                var dbEmployee = await _dbContext.Employees.FirstOrDefaultAsync(e => e.Id == id);
-                // dbEmployee.Map(employee);
-
-                // _dbContext.Update( employee);
                 _dbContext.Entry(employee).State = EntityState.Modified;
-
                 await _dbContext.SaveChangesAsync();
             }
             catch (Exception ex)
