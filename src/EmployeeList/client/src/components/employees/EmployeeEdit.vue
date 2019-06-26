@@ -99,11 +99,12 @@ export default {
         }
     },
     created() {
-        EmployeeService.getSingle(this.$router.currentRoute.params.id).then((response) => {
-            this.formData.name = response.data.name
-            this.formData.position = response.data.position
+        EmployeeService.getSingle(this.$router.currentRoute.params.id).then(response => {
+            this.formData.name = response.employee.name
+            this.formData.position = response.employee.position
             this.formData.startDate = response.data.startDate
             this.formData.email = response.data.email
+            this.employee.id = response.employeeId
         })
     },
     methods: {
