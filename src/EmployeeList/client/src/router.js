@@ -17,6 +17,6 @@ export default new VueRouter({
     { path: '/employee/table', name: 'EmployeeTable', component: EmployeeTable },
     { path: '/employee/:id', name: 'EmployeeDetails', component: EmployeeDetails },
     { path: '/employee/update/:id', name: 'EmployeeUpdate', component: EmployeeUpdate },
-    { path: '*', name: 'Not found', component: NotFound }
+    { path: '*', component: NotFound }
   ]
 })
