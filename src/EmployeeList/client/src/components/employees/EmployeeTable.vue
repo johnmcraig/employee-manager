@@ -13,10 +13,10 @@
           <table class="table table-striped">
             <thead>
               <tr>
-                <th>Employee name</th>
-                <th>Employee email</th>
+                <th>Employee Name</th>
+                <th>Employee Email</th>
                 <th>Details</th>
-                <th>Edit</th>
+                <th>Update</th>
                 <th>Delete</th>
               </tr>
             </thead>
@@ -26,7 +26,7 @@
                 :key="employee.id"
                 :employee="employee"  
                 @details="detailsEmployee"
-                @edit="editEmployee"
+                @update="updateEmployee"
                 @delete="deleteEmployee" />
             </tbody>
           </table>
@@ -77,9 +77,9 @@ export default {
       this.$router.push({ name: 'EmployeeDetails', params: { id: employeeId } })
       // console.log('details', employeeId)
     },
-    editEmployee(employeeId) {
+    updateEmployee(employeeId) {
       this.$router.push({ name: 'EmployeeUpdate', params: { id: employeeId } })
-      // console.log('edit', employeeId)
+      // console.log('update', employeeId)
     },
     deleteEmployee(employeeId) {
       this.selectedEmployeeId = employeeId
