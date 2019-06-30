@@ -6,7 +6,7 @@
       <b-button variant="secondary" @click="onDetailsClick">Details</b-button>
     </td>
     <td>
-      <b-button variant="success" @click="onEditClick">Edit</b-button>
+      <b-button variant="success" @click="onUpdateClick">Update</b-button>
     </td>
     <td>
       <b-button variant="danger" @click="onDeleteClick">Delete</b-button>
@@ -22,8 +22,8 @@ export default {
     onDetailsClick() {
         this.$emit('details', this.employee.id)
     },
-    onEditClick() {
-      this.$emit('edit', this.employee.id)
+    onUpdateClick() {
+      this.$emit('update', this.employee.id)
     },
     onDeleteClick() {
       this.$emit('delete', this.employee.id)
