@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-md-offset-10 col-md-2">
+    <a [routerLink]="['/employee/create']">Add Employee</a>
+  </div>
+</div>
+<br />
+<div class="row">
+  <div class="col-md-12">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Employee Name</th>
+            <th>Employee's Email</th>
+            <th>Start Date</th>
+            <th>Details</th>
+            <th>Update</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employees">
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.email }}</td>
+            <td>{{ employee.startDate | date: "dd/MM/yyyy" }}</td>
+            <td>
+              <button
+                type="button"
+                id="details"
+                class="btn btn-secondary"
+                (click)="getEmployeeDetails(employee.id)"
+              >
+                Details
+              </button>
+            </td>
+            <td>
+              <button type="button" id="update" class="btn btn-success"
+              (click)="redirectToUpdatePage(employee.id)">
+                Update
+              </button>
+            </td>
+            <td>
+              <button type="button" id="delete" class="btn btn-danger"
+              (click)="redirectToDeletePage(employee.id)">
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

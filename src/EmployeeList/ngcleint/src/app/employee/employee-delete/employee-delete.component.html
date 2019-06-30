@@ -1,0 +1,81 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-10">
+
+      <div class="row">
+        <div class="col-md-3">
+          <label for="name" class="control-label">Employee Name:</label>
+        </div>
+        <div class="col-md-7">
+          <span name="name">
+            {{ employee?.name }}
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <label for="email" class="control-label">Email:</label>
+        </div>
+        <div class="col-md-7">
+          <span name="email">
+            {{ employee?.email }}
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <label for="position" class="control-label">Position:</label>
+        </div>
+        <div class="col-md-7">
+          <span name="position">
+            {{ employee?.position }}
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <label for="startDate" class="control-label">Start Date:</label>
+        </div>
+        <div class="col-md-7">
+          <span name="startDate">
+            {{ employee?.startDate | date: "MM/dd/yyyy" }}
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <br />
+
+  <div class="col-md-5 offset-md-4">
+        <button
+          type="submit"
+          class="btn btn-info"
+          (click)="deleteEmployee()"
+        >
+          Delete
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="redirectToEmployeeList()"
+        >
+          Cancel
+        </button>
+      </div>
+
+    <app-success-modal [modalHeaderText]="'Success message'" 
+        [modalBodyText]="'Action completed successfully'" 
+        [okButtonText]="'OK'"
+        (redirectOnOK)="redirectToEmployeeList()">
+    </app-success-modal>
+    
+    <app-error-modal [modalHeaderText]="'Error message'" 
+        [modalBodyText]="errorMessage" 
+        [okButtonText]="'OK'">
+    </app-error-modal>
+</div>

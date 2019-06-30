@@ -75,36 +75,43 @@ namespace server.Controllers.v1
         }
 
         [HttpPut("{id}", Name = nameof(UpdateEmployee))]
-        public async Task<IActionResult> UpdateEmployee(Guid id, [FromBody] Employee employee)
+        public async Task<IActionResult> UpdateEmployee([FromRoute] Guid id, [FromBody] Employee employee)
         {   
+            if(!ModelState.IsValid) 
+                return BadRequest(ModelState);
+
+            if(id != employee.Id)
+                return BadRequest();
+                // return NotFound($"Could not find employee by id: {id}");
+            
+            _dbContext.Entry(employee).State = EntityState.Modified;
+
             try
             {
-                if(!ModelState.IsValid) 
-                    return BadRequest(ModelState);
-
-                if(id != employee.Id)
-                    return NotFound($"Could not find employee by id: {id}");
-                
-                _dbContext.Entry(employee).State = EntityState.Modified;
                 await _dbContext.SaveChangesAsync();
             }
-            catch (Exception ex)
+            catch (DbUpdateConcurrencyException) //(Exception ex)
             {
-                return StatusCode(500, $"Enternal server Error: {ex}");
+                if(!employeeExists(id))
+                    return NotFound($"Could not find Employee by {id}");
+                else
+                    throw;
+
+                //return StatusCode(500, $"Enternal server Error: {ex}");
             }
 
             return NoContent();
         }
 
         [HttpDelete("{id}", Name = nameof(DeleteEmployee))]
-        // [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteEmployee(Guid id) 
         { 
             try
             {
                 var employee = await _dbContext.Employees.FindAsync(id);
 
-                if(employee == null) return NotFound("Employee not found");
+                if(employee == null)
+                    return NotFound("Employee not found");
 
                 _dbContext.Employees.Remove(employee);
                 await _dbContext.SaveChangesAsync();
@@ -115,6 +122,11 @@ namespace server.Controllers.v1
             {
                 return StatusCode(500, $"Enternal server Error: {ex}");
             }
+        }
+
+        private bool employeeExists(Guid id)
+        {
+            return _dbContext.Employees.Any(e => e.Id == id);
         }
     }
 }

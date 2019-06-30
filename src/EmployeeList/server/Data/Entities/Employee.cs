@@ -19,6 +19,6 @@ namespace server.Data.Entites
         
         [DataType(DataType.Date)]  
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)] 
-        public DateTime StartDate { get; set; }
+        public DateTime? StartDate { get; set; }
     }
 }
