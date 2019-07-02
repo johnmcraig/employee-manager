@@ -3,8 +3,7 @@ import { Employee } from 'src/app/_interfaces/employee';
 import { RepositoryService } from 'src/app/shared/services/repository.service';
 import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import * as $ from 'jquery';
-
+declare var $: any;
 
 @Component({
   selector: 'app-employee-delete',
@@ -43,7 +42,7 @@ export class EmployeeDeleteComponent implements OnInit {
   public deleteEmployee() {
     const deleteUrl = `employees/${this.employee.id}`;
     this.repo.delete(deleteUrl).subscribe(res => {
-      $('#successModal').modal();
+       $('#successModal').modal();
     },
     (error) => {
       this.errorHandler.handleError(error);

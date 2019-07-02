@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { EmployeeForCreating } from 'src/app/_interfaces/employee-create';
 import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';
-import * as $ from 'jquery';
+declare var $: any;
 
 @Component({
   selector: 'app-employee-create',
