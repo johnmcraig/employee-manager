@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { EmployeeForCreating } from 'src/app/_interfaces/employee-create';
 import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';
-declare var $: any;
+// import * as $ from 'jquery';
+// declare var $: any;
 
 @Component({
   selector: 'app-employee-create',
@@ -62,7 +63,9 @@ export class EmployeeCreateComponent implements OnInit {
     const apiUrl = 'employees/';
     this.repo.create(apiUrl, employee)
       .subscribe(res => {
-        $('#successModal').modal();
+        // $('#successModal').modal('show');
+        //  document.getElementById('successModal').click();
+        this.router.navigate(['employee/list']);
       },
       (error => {
         this.errorHandler.handleError(error);

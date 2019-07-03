@@ -10,18 +10,19 @@ import { ErrorHandlerService } from 'src/app/shared/services/error-handler.servi
   styleUrls: ['./employee-details.component.css']
 })
 export class EmployeeDetailsComponent implements OnInit {
+
   public employee: Employee;
   public errorMessage = '';
 
   constructor(private router: Router, private repo: RepositoryService,
-              private activeRoute: ActivatedRoute, private errorHandler: ErrorHandlerService) { }
+              private route: ActivatedRoute, private errorHandler: ErrorHandlerService) { }
 
   ngOnInit() {
     this.getEmployeeDetails();
   }
 
   getEmployeeDetails() {
-    const id: string = this.activeRoute.snapshot.params.id;
+    const id: string = this.route.snapshot.params.id;
     const apiUrl = `employees/${id}`;
 
     this.repo.getData(apiUrl).subscribe(res => {
