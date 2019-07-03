@@ -6,7 +6,7 @@
       <h3>Add Employees to the Database</h3>
       <p>
         Navigate to the employee form -
-        <a href="#">Go to Employee Form.</a>
+        <a [routerLink]="['/employee/create']">Go to Employee Form.</a>
       </p>
       <p>Enter form data to add an entry.</p>
     </div>
@@ -17,7 +17,7 @@
       <h3>View the Already Existing Employees</h3>
       <p>
         Navigate to see all current employees -
-        <a href="#">Go to Employee Table.</a>
+        <a [routerLink]="['/employee/list']">Go to Employee List.</a>
       </p>
       <p>
         Use the button links on the table to see additional details, edit, or
