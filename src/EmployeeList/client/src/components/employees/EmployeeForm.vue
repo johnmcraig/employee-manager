@@ -57,7 +57,7 @@
                     v-model="formData.startDate" 
                     type="date"
                     
-                    placeholder="Enter A Starting Date">
+                    placeholder="Enter a starting date">
                 </b-form-input>
                 
             </b-form-group>
