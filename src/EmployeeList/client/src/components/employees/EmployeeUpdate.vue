@@ -66,7 +66,7 @@
                     v-model="formData.startDate" 
                     type="date"
                     
-                    placeholder="Enter A Starting Date">
+                    placeholder="Enter a starting date">
                 </b-form-input>
                 
             </b-form-group>
@@ -112,9 +112,10 @@ export default {
     created() {
         EmployeeService.getSingle(this.$router.currentRoute.params.id).then((response) => {
             this.formData.name = response.data.name
-            this.formData.position = response.data.position
-            this.formData.startDate = response.data.startDate
             this.formData.email = response.data.email
+            this.formData.position = response.data.position
+            this.formData.startDate = response.data.startDate.splice('T')[0]
+            
         })
     },
     methods: {
@@ -133,7 +134,7 @@ export default {
         },
         onAlertModalOkClick () {
             if (this.isSuccessfull) {
-                this.$router.push({ name: 'EmployeeTable', params: { id: employeeId } })
+                this.$router.push({ name: 'EmployeeTable' })
             }
         }
     }
