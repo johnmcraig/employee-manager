@@ -10,8 +10,12 @@ import { EmployeeUpdateComponent } from './employee-update/employee-update.compo
 import { EmployeeDeleteComponent } from './employee-delete/employee-delete.component';
 
 @NgModule({
-// tslint:disable-next-line: max-line-length
-  declarations: [EmployeeListComponent, EmployeeDetailsComponent, EmployeeCreateComponent, EmployeeUpdateComponent, EmployeeDeleteComponent],
+  declarations: [
+    EmployeeListComponent,
+    EmployeeDetailsComponent,
+    EmployeeCreateComponent,
+    EmployeeUpdateComponent,
+    EmployeeDeleteComponent],
   imports: [
     CommonModule,
     SharedModule,
