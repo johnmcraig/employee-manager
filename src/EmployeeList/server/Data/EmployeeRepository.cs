@@ -32,13 +32,16 @@ namespace server.Data
             _dbContex.Remove(entity);
         }
 
+        public void Update<T>(T entity) where T : class
+        {
+            _dbContex.Update(entity);
+        }
+
         public async Task<Employee> GetEmployeeAsync(Guid id)
         {
             _logger.LogInformation($"Getting a single employee by {id}");
 
-            IQueryable<Employee> query = _dbContex.Employees;
-
-            query = query.Where(e => e.Id == id);
+            IQueryable<Employee> query = _dbContex.Employees.Where(e => e.Id == id);
 
             // var employee = await _dbContex.Employees.FirstOrDefaultAsync(x => x.Name == name);
 
