@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using server.Data;
 using server.Data.Entites;
+using server.Dtos;
 using server.Models;
 
 namespace server.Controllers
@@ -27,7 +28,7 @@ namespace server.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<EmployeeModel[]>> GetAll()
+        public async Task<ActionResult<EmployeeDto[]>> GetAll()
         {
             try
             {
@@ -36,7 +37,7 @@ namespace server.Controllers
                 if(employees == null)
                     return NotFound ();
 
-                return Mapper.Map<EmployeeModel[]>(employees);
+                return Mapper.Map<EmployeeDto[]>(employees);
             } 
             catch(Exception ex)
             {
@@ -45,7 +46,7 @@ namespace server.Controllers
         }
 
         [HttpGet("{id:guid}")]
-        public async Task<ActionResult<EmployeeModel>> GetEmployee(Guid id)
+        public async Task<ActionResult<EmployeeDto>> GetEmployee(Guid id)
         {
             try
             {
@@ -54,7 +55,7 @@ namespace server.Controllers
                 if(employee == null)
                     return NotFound();
 
-                return Mapper.Map<EmployeeModel>(employee);
+                return Mapper.Map<EmployeeDto>(employee);
             } 
             catch(Exception ex)
             {
@@ -63,11 +64,11 @@ namespace server.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<EmployeeModel>> Post([FromBody] EmployeeModel model)
+        public async Task<ActionResult<EmployeeCreateDto>> AddEmployee([FromBody] EmployeeCreateDto employeeCreate)
         {
             try
             {
-                var employee = Mapper.Map<Employee>(model);
+                var employee = Mapper.Map<Employee>(employeeCreate);
 
                 _repo.Add(employee);
 
@@ -75,7 +76,7 @@ namespace server.Controllers
                 {
                     return CreatedAtAction(nameof(GetEmployee), 
                         new { id = employee.Id },
-                        Mapper.Map<EmployeeModel>(employee));
+                        Mapper.Map<EmployeeCreateDto>(employee));
                 }
             }
             catch(Exception ex)
@@ -88,20 +89,20 @@ namespace server.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<EmployeeModel>> Put(Guid id, EmployeeModel model)
+        public async Task<ActionResult<EmployeeUpdateDto>> Put(Guid id, EmployeeUpdateDto employeeToUpdate)
         {
             try
             {
                 var oldEmployee = _repo.GetEmployeeAsync(id);
 
-                if(model == null) 
+                if(employeeToUpdate == null) 
                     return NotFound($"Could not find employee with {id}");
 
-                await Mapper.Map(model, oldEmployee);
+                await Mapper.Map(employeeToUpdate, oldEmployee);
 
                 if(await _repo.SaveChangesAsync())
                 {
-                    return Mapper.Map<EmployeeModel>(oldEmployee);
+                    return Mapper.Map<EmployeeUpdateDto>(oldEmployee);
                 }
             }
             catch (Exception ex)
@@ -118,7 +119,7 @@ namespace server.Controllers
         {
             try
             {   
-                // issue in repository with model binding passing into method for Delete<T>(T entity)
+                // issue in repository with employeeCreate binding passing into method for Delete<T>(T entity)
                 var oldEmployee = _repo.GetEmployeeAsync(id);
 
                 if(oldEmployee == null) return NotFound();
