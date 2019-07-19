@@ -19,6 +19,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using server.Data;
 using server.Data.Entites;
+using server.Dtos;
 using server.Models;
 using Swashbuckle.AspNetCore.Swagger;
 
@@ -96,7 +97,11 @@ namespace server
 
             AutoMapper.Mapper.Initialize(mapper =>
             {
-                mapper.CreateMap<Employee, EmployeeModel>().ReverseMap();
+                mapper.ValidateInlineMaps = false;
+                mapper.CreateMissingTypeMaps = true;
+                mapper.CreateMap<Employee, EmployeeDto>().ReverseMap();
+                mapper.CreateMap<Employee, EmployeeCreateDto>().ReverseMap();
+                mapper.CreateMap<Employee, EmployeeUpdateDto>().ReverseMap();
             });
 
             app.UseHttpsRedirection();
