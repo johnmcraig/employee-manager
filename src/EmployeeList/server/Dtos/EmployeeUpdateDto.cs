@@ -5,6 +5,9 @@ namespace server.Dtos
 {
     public class EmployeeUpdateDto
     {
+        [Key]
+        public Guid Id { get; set; }
+        
         [Required(ErrorMessage = "A name is required")]
         public string Name { get; set; }
         
