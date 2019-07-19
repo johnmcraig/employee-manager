@@ -93,13 +93,11 @@ namespace server.Controllers
         {
             try
             {
-                if(employeeToUpdate == null) 
-                    return BadRequest();
+                if(employeeToUpdate == null) return BadRequest();
 
                 var existingEmployee = _repo.GetEmployeeAsync(id);
 
-                if(existingEmployee == null)
-                    return NotFound();
+                if(existingEmployee == null) return NotFound();
 
                 await Mapper.Map(employeeToUpdate, existingEmployee);
 
@@ -117,31 +115,28 @@ namespace server.Controllers
             {
                 return StatusCode(500, $"Enternal server error: {ex}");
             }
-
-            // return BadRequest();
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(Guid id) 
+        public async Task<ActionResult> Delete(Guid id) 
         {
-            try
-            {   
-                // issue in repository with employeeCreate binding passing into method for Delete<T>(T entity)
-                var oldEmployee = _repo.GetEmployeeAsync(id);
+            // try
+            // {  
+                var employee = await _repo.GetEmployeeAsync(id);
 
-                if(oldEmployee == null) return NotFound();
+                if(employee == null) return NotFound();
                 
-                _repo.Delete(oldEmployee);
+                _repo.Delete(employee);
                 
                 if(await _repo.SaveAllAsync())
                 {
                     return Ok();
                 }
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Eternal server error: {ex}");
-            }
+            // }
+            // catch (Exception ex)
+            // {
+            //     return StatusCode(500, $"Eternal server error: {ex}");
+            // }
             
             return BadRequest();
         }
