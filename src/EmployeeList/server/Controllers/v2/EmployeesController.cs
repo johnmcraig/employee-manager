@@ -63,16 +63,16 @@ namespace server.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost(Name = nameof(AddEmployee))]
         public async Task<ActionResult<EmployeeCreateDto>> AddEmployee([FromBody] EmployeeCreateDto employeeCreate)
         {
             try
             {
-                var employee = Mapper.Map<Employee>(employeeCreate);
+                var employee = Mapper.Map<EmployeeDto>(employeeCreate);
 
                 _repo.Add(employee);
 
-                if(await _repo.SaveChangesAsync())
+                if(await _repo.SaveAllAsync())
                 {
                     return CreatedAtAction(nameof(GetEmployee), 
                         new { id = employee.Id },
@@ -88,30 +88,37 @@ namespace server.Controllers
 
         }
 
-        [HttpPut("{id}")]
-        public async Task<ActionResult<EmployeeUpdateDto>> Put(Guid id, EmployeeUpdateDto employeeToUpdate)
+        [HttpPut("{id}", Name = nameof(UpdateEmployee))]
+        public async Task<ActionResult<EmployeeUpdateDto>> UpdateEmployee(Guid id, EmployeeUpdateDto employeeToUpdate)
         {
             try
             {
-                var oldEmployee = _repo.GetEmployeeAsync(id);
-
                 if(employeeToUpdate == null) 
-                    return NotFound($"Could not find employee with {id}");
+                    return BadRequest();
 
-                await Mapper.Map(employeeToUpdate, oldEmployee);
+                var existingEmployee = _repo.GetEmployeeAsync(id);
 
-                if(await _repo.SaveChangesAsync())
-                {
-                    return Mapper.Map<EmployeeUpdateDto>(oldEmployee);
-                }
+                if(existingEmployee == null)
+                    return NotFound();
+
+                await Mapper.Map(employeeToUpdate, existingEmployee);
+
+               if(await _repo.SaveAllAsync())
+               {
+                   return Ok(Mapper.Map<EmployeeUpdateDto>(existingEmployee));
+               }
+               else
+               {
+                   return BadRequest("Could not save changes");
+               }
+                
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Enternal server error: {ex}");
             }
 
-            return BadRequest();
-
+            // return BadRequest();
         }
 
         [HttpDelete("{id}")]
@@ -126,7 +133,7 @@ namespace server.Controllers
                 
                 _repo.Delete(oldEmployee);
                 
-                if(await _repo.SaveChangesAsync())
+                if(await _repo.SaveAllAsync())
                 {
                     return Ok();
                 }
