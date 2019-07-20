@@ -134,16 +134,16 @@ namespace server
                     name: "spa-fallback",
                     defaults: new { controller = "Fallback", action = "Index"} 
                 );
-                // comment out MapSpaFallbackRoute to use Vue build files in wwwroot
-                routes.MapRoute(
-                    name: "Root",
-                    template: "{controller=Root}/{action=Index}/{id?}",
-                    defaults: new { controller = "Root", action = "Index"});
+                // comment out MapSpaFallbackRoute above to use Vue build files in wwwroot
+                // routes.MapRoute(
+                //     name: "Root",
+                //     template: "",
+                //     defaults: new { controller = "Root", action = "Index"});
 
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index/{id?}",
-                    defaults: new { controller = "Home" });
+                // routes.MapRoute(
+                //     name: "default",
+                //     template: "{controller=Home}/{action=Index/{id?}",
+                //     defaults: new { controller = "Home", action = "Index" });
             });
         }
     }
