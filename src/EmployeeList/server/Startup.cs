@@ -126,17 +126,25 @@ namespace server
 
             seedData.SeedData().Wait();
 
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
             app.UseMvc(routes => {
+                
+                routes.MapSpaFallbackRoute(
+                    name: "spa-fallback",
+                    defaults: new { controller = " Fallback", action = "Index"} 
+                );
 
                 routes.MapRoute(
                     name: "Root",
-                    template: "", //{controller=Home}/{action=Index/{id?}
+                    template: "{controller=Root}/{action=Index}/{id?}",
                     defaults: new { controller = "Root", action = "Index"});
 
                 routes.MapRoute(
                     name: "default",
-                    template: "_/{action}",
-                    defaults: new { controller = "Root" });
+                    template: "{controller=Home}/{action=Index/{id?}",
+                    defaults: new { controller = "Home" });
             });
         }
     }
