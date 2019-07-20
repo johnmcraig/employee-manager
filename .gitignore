@@ -337,3 +337,6 @@ ASALocalRun/
 .vscode
 wwwroot/client/**/*
 src/EmployeeList/server/wwwroot/client/**/*
+src/EmployeeList/server/wwwroot/dist/**
+wwwroot/dist
+wwwroot/**/*
