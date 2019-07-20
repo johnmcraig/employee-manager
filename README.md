@@ -1,19 +1,20 @@
 # Employee List
-> An employee contact form and table with full CRUD functionality using Vue.js and Asp.Net Core
+> An employee data form with full CRUD functionality using Vue.js and/or Angular 7, and Asp.Net Core
 
 ## Scope
-This is a project to demonstrate extending existing conecepts into larger projects. It is an employee contact form for data entry based off of Tania Rascia's Vue.js tutorial found [here](https://www.taniarascia.com/getting-started-with-vue/).
+This is a project to demonstrate extending existing conecepts into larger projects. It is an employee contact form for data entry using Vue SPA or Angular SPA front-end.
 
 ## Development Stack
 The application was built using the following:
 - ASP.Net Core 2.2
 - Vue.js
+- Angular 7
 
 ## Setup
 In order to test/use this application, you will need the following:
 - Asp.Net Core 2.0 SDK, prefereably 2.2.1
 - Node.js version 8 or higher
-- The Vue CLI
+- The Vue or Angular CLI
 
 ## Installation
 Grab the repository either by downloading the zip file or clone the project:
@@ -31,9 +32,12 @@ For client side dependecies:
 ~$ cd src/EmployeeList/client
 ~$ npm install
 ```
-Make sure the `@vue/cli` is installed as well:
+Make sure the `@vue/cli` or `@anguilar\cli` is installed as well:
 ```sh
+# for Vue
 ~$ npm install -g @vue/cli
+# for Angular
+~$ npm install -g @angular/cli @angular/core
 ```
 
 For server side code, build and restore dependecies and NuGet packages:
@@ -60,4 +64,4 @@ Navigate to localhost:5001 in a browser to see the current build running.
 - Enable searching by Employee name.
 
 ## Known Issues and Bugs
-- The delete action in the controller class has an issue with binding the model with the repository delete method, so it is using the context class instead.
+- The delete action in the controller class has an issue with binding the model with the repository delete method, so it is using the context class instead on version 1 under `/v1/...` route.
