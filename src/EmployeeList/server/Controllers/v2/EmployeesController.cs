@@ -34,8 +34,7 @@ namespace server.Controllers
             {
                 var employees = await _repo.GetAllEmployeesAsync();
 
-                if(employees == null)
-                    return NotFound ();
+                if(employees == null) return NotFound ();
 
                 return Mapper.Map<EmployeeDto[]>(employees);
             } 
@@ -52,8 +51,7 @@ namespace server.Controllers
             {
                 var employee = await _repo.GetEmployeeAsync(id);
 
-                if(employee == null)
-                    return NotFound();
+                if(employee == null) return NotFound();
 
                 return Mapper.Map<EmployeeDto>(employee);
             } 
@@ -89,7 +87,7 @@ namespace server.Controllers
         }
 
         [HttpPut("{id}", Name = nameof(UpdateEmployee))]
-        public async Task<ActionResult<EmployeeUpdateDto>> UpdateEmployee(Guid id, EmployeeUpdateDto employeeToUpdate)
+        public async Task<ActionResult<EmployeeUpdateDto>> UpdateEmployee([FromRoute] Guid id, [FromBody] EmployeeUpdateDto employeeToUpdate)
         {
             try
             {
@@ -117,8 +115,8 @@ namespace server.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(Guid id) 
+        [HttpDelete("{id}", Name = nameof(DeleteEmployee))]
+        public async Task<ActionResult> DeleteEmployee(Guid id) 
         {
             // try
             // {  
