@@ -1,5 +1,5 @@
 # Employee List
-> An employee data form with full CRUD functionality using Vue.js and/or Angular 7, and Asp.Net Core
+> An employee data form with full CRUD functionality using Vue.js and/or Angular 8, and Asp.Net Core
 
 ## Scope
 This is a project to demonstrate extending existing conecepts into larger projects. It is an employee contact form for data entry using Vue SPA or Angular SPA front-end.
@@ -8,7 +8,7 @@ This is a project to demonstrate extending existing conecepts into larger projec
 The application was built using the following:
 - ASP.Net Core 2.2
 - Vue.js
-- Angular 7
+- Angular 8
 
 ## Setup
 In order to test/use this application, you will need the following:
@@ -50,7 +50,11 @@ For server side code, build and restore dependecies and NuGet packages:
 To run a local environment on the client side:
 Use `npm` script commands in a terminal/command box while in the `../client` directory:
 ```sh
+# for Vue client
 ~$ npm run watch
+
+# for Angular client
+~$ ng serve
 ```
 This outputs a minified JavaScript file in the `wwwroot/dist` directory of the API.
 
