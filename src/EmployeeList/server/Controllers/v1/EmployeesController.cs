@@ -77,12 +77,9 @@ namespace server.Controllers.v1
         [HttpPut("{id}", Name = nameof(UpdateEmployee))]
         public async Task<IActionResult> UpdateEmployee([FromRoute] Guid id, [FromBody] Employee employee)
         {   
-            if(!ModelState.IsValid) 
-                return BadRequest(ModelState);
+            if(!ModelState.IsValid) return BadRequest(ModelState);
 
-            if(id != employee.Id)
-                return BadRequest();
-                // return NotFound($"Could not find employee by id: {id}");
+            if(id != employee.Id) return BadRequest(); // return NotFound($"Could not find employee by id: {id}");
             
             _dbContext.Entry(employee).State = EntityState.Modified;
 
@@ -97,7 +94,7 @@ namespace server.Controllers.v1
                 else
                     throw;
 
-                //return StatusCode(500, $"Enternal server Error: {ex}");
+                // return StatusCode(500, $"Enternal server Error: {ex}");
             }
 
             return NoContent();
