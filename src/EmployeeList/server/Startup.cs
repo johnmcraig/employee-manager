@@ -130,7 +130,7 @@ namespace server
             app.UseStaticFiles();
 
             app.UseMvc(routes => {
-                
+                // comment out MapRoute when using Angular build files in wwwroot
                 routes.MapSpaFallbackRoute(
                     name: "spa-fallback",
                     defaults: new { controller = " Fallback", action = "Index"} 
