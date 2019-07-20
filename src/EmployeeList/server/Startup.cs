@@ -110,8 +110,6 @@ namespace server
                 ForwardedHeaders = ForwardedHeaders.All
             });
 
-            app.UseStaticFiles();
-
             app.UseSwagger();
             app.UseSwaggerUI(options => {
                 foreach (var description in provider.ApiVersionDescriptions)
@@ -130,12 +128,13 @@ namespace server
             app.UseStaticFiles();
 
             app.UseMvc(routes => {
+
                 // comment out MapRoute when using Angular build files in wwwroot
                 routes.MapSpaFallbackRoute(
                     name: "spa-fallback",
-                    defaults: new { controller = " Fallback", action = "Index"} 
+                    defaults: new { controller = "Fallback", action = "Index"} 
                 );
-
+                // comment out MapSpaFallbackRoute to use Vue build files in wwwroot
                 routes.MapRoute(
                     name: "Root",
                     template: "{controller=Root}/{action=Index}/{id?}",
