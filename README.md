@@ -1,8 +1,8 @@
 # Employee List
-> An employee data form with full CRUD functionality using Vue.js and/or Angular 8, and Asp.Net Core
+> An employee data form with full CRUD functionality using Vue.js and/or Angular 8 with and Asp.Net Core
 
 ## Scope
-This is a project to demonstrate extending existing conecepts into larger projects. It is an employee contact form for data entry using Vue SPA or Angular SPA front-end.
+This is a project to demonstrate extending conecepts into larger projects. It is an employee contact form for data entry using Vue SPA or Angular SPA front-end.
 
 ## Development Stack
 The application was built using the following:
