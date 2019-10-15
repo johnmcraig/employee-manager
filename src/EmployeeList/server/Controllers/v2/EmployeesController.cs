@@ -66,7 +66,7 @@ namespace server.Controllers
         {
             try
             {
-                var employee = Mapper.Map<EmployeeDto>(employeeCreate);
+                var employee = Mapper.Map<Employee>(employeeCreate);
 
                 _repo.Add(employee);
 
