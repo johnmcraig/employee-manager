@@ -10,6 +10,10 @@ The application was built using the following:
 - Vue.js
 - Angular 8
 
+## Built-in Endpoint Testing
+The project contains built in Api endpoint testing using [Swagger](https://github.com/domaindrivendev/Swashbuckle.AspNetCore). This was setup in the `Startup.cs`class in both the Configure services and IConfiguration to be used upon startup.
+After launching the project in a local environment, navigate to `https://localhost:5001/swagger` to view the test index page.
+
 ## Setup
 In order to test/use this application, you will need the following:
 - Asp.Net Core 2.0 SDK, prefereably 2.2.1
@@ -68,4 +72,4 @@ Navigate to localhost:5001 in a browser to see the current build running.
 - Enable searching by Employee name.
 
 ## Known Issues and Bugs
-- The delete action in the controller class has an issue with binding the model with the repository delete method, so it is using the context class instead on version 1 under `/v1/...` route.
+- The Update action in the controller endpoint class under ApiVersion 2 (i.e. api/v2/endpoint) has an issue with sending successful requests to the server due to AutoMapper not able to bind the `EmployeeDto` to the `EmployeeUpdateDto`, so it is using the context class instead on version 1 under `/v1/...` route.
