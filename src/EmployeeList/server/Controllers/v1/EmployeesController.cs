@@ -31,7 +31,7 @@ namespace server.Controllers.v1
             catch (Exception ex)
             {
                 
-                return StatusCode(500, $"Enternal server Error: {ex}");
+                return StatusCode(500, $"Internal server Error: {ex}");
             }
         }
 
@@ -50,7 +50,7 @@ namespace server.Controllers.v1
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Enternal server Error: {ex}");
+                return StatusCode(500, $"Internal server Error: {ex}");
             }
         }
 
@@ -70,7 +70,7 @@ namespace server.Controllers.v1
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Enternal server Error: {ex}");
+                return StatusCode(500, $"Internal server Error: {ex}");
             }
         }
 
@@ -89,12 +89,12 @@ namespace server.Controllers.v1
             }
             catch (DbUpdateConcurrencyException) //(Exception ex)
             {
-                if(!employeeExists(id))
+                if(!EmployeeExists(id))
                     return NotFound($"Could not find Employee by {id}");
                 else
                     throw;
 
-                // return StatusCode(500, $"Enternal server Error: {ex}");
+                // return StatusCode(500, $"Internal server Error: {ex}");
             }
 
             return NoContent();
@@ -117,11 +117,11 @@ namespace server.Controllers.v1
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Enternal server Error: {ex}");
+                return StatusCode(500, $"Internal server Error: {ex}");
             }
         }
 
-        private bool employeeExists(Guid id)
+        private bool EmployeeExists(Guid id)
         {
             return _dbContext.Employees.Any(e => e.Id == id);
         }
