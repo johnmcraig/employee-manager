@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EmployeeList", "EmployeeLis
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "server", "EmployeeList\server\server.csproj", "{FF58C58F-60DE-4151-BCDF-4AD132BC40DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "integrationtests", "EmployeeList\integrationtests\integrationtests.csproj", "{A56BBCA5-3D40-4F02-86F1-A29F376AF85C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,18 @@ Global
 		{FF58C58F-60DE-4151-BCDF-4AD132BC40DB}.Release|x64.Build.0 = Release|Any CPU
 		{FF58C58F-60DE-4151-BCDF-4AD132BC40DB}.Release|x86.ActiveCfg = Release|Any CPU
 		{FF58C58F-60DE-4151-BCDF-4AD132BC40DB}.Release|x86.Build.0 = Release|Any CPU
+		{A56BBCA5-3D40-4F02-86F1-A29F376AF85C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A56BBCA5-3D40-4F02-86F1-A29F376AF85C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A56BBCA5-3D40-4F02-86F1-A29F376AF85C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A56BBCA5-3D40-4F02-86F1-A29F376AF85C}.Debug|x64.Build.0 = Debug|Any CPU
+		{A56BBCA5-3D40-4F02-86F1-A29F376AF85C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A56BBCA5-3D40-4F02-86F1-A29F376AF85C}.Debug|x86.Build.0 = Debug|Any CPU
+		{A56BBCA5-3D40-4F02-86F1-A29F376AF85C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A56BBCA5-3D40-4F02-86F1-A29F376AF85C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A56BBCA5-3D40-4F02-86F1-A29F376AF85C}.Release|x64.ActiveCfg = Release|Any CPU
+		{A56BBCA5-3D40-4F02-86F1-A29F376AF85C}.Release|x64.Build.0 = Release|Any CPU
+		{A56BBCA5-3D40-4F02-86F1-A29F376AF85C}.Release|x86.ActiveCfg = Release|Any CPU
+		{A56BBCA5-3D40-4F02-86F1-A29F376AF85C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{FF58C58F-60DE-4151-BCDF-4AD132BC40DB} = {D577888C-5768-4B4D-A252-248A86EE86E8}
