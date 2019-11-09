@@ -1,17 +1,12 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
-using Microsoft.EntityFrameworkCore;
 using server.Data;
 using server.Data.Entites;
 using server.Dtos;
-using server.Models;
 
-namespace server.Controllers
+namespace server.Controllers.v2
 {
     [ApiVersion("2.0")]
     [Route ("api/v{version:apiVersion}/[controller]")]
@@ -19,11 +14,10 @@ namespace server.Controllers
     public class EmployeesController : ControllerBase
     {
         private readonly IEmployeeRepository _repo;
-        private readonly EmployeeDbContext _dbContext;
+        
 
-        public EmployeesController(IEmployeeRepository repo, EmployeeDbContext dbContext)
+        public EmployeesController(IEmployeeRepository repo)
         {
-            _dbContext = dbContext;
             _repo = repo;
         }
 
@@ -40,7 +34,7 @@ namespace server.Controllers
             } 
             catch(Exception ex)
             {
-                return StatusCode(500, $"Enternal sever error: {ex}");
+                return StatusCode(500, $"Internal sever error: {ex}");
             }
         }
 
@@ -57,7 +51,7 @@ namespace server.Controllers
             } 
             catch(Exception ex)
             {
-                return StatusCode(500, $"Eternal server error: {ex}");
+                return StatusCode(500, $"Internal server error: {ex}");
             }
         }
 
@@ -79,7 +73,7 @@ namespace server.Controllers
             }
             catch(Exception ex)
             {
-                return StatusCode(500, $"Enternal server error: {ex}");
+                return StatusCode(500, $"Internal server error: {ex}");
             }
 
             return BadRequest();
@@ -111,15 +105,15 @@ namespace server.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Enternal server error: {ex}");
+                return StatusCode(500, $"Internal server error: {ex}");
             }
         }
 
         [HttpDelete("{id}", Name = nameof(DeleteEmployee))]
         public async Task<ActionResult> DeleteEmployee(Guid id) 
         {
-            // try
-            // {  
+            try
+            {  
                 var employee = await _repo.GetEmployeeAsync(id);
 
                 if(employee == null) return NotFound();
@@ -130,11 +124,11 @@ namespace server.Controllers
                 {
                     return Ok();
                 }
-            // }
-            // catch (Exception ex)
-            // {
-            //     return StatusCode(500, $"Eternal server error: {ex}");
-            // }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
             
             return BadRequest();
         }
