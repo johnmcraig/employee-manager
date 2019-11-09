@@ -39,14 +39,14 @@ namespace server.Data
 
             IQueryable<Employee> query = _dbContext.Employees.Where(e => e.Id == id);
 
-            // var employee = await _dbContex.Employees.FirstOrDefaultAsync(x => x.Name == name);
+            // var employee = await _dbContext.Employees.FirstOrDefaultAsync(x => x.Name == name);
 
             return await query.FirstOrDefaultAsync();
         }
 
         public async Task<Employee[]> GetAllEmployeesAsync()
         {
-            _logger.LogInformation($"Getting all employees");
+            _logger.LogInformation("Getting all employees");
 
             var employees = await _dbContext.Employees.OrderByDescending(e => e.Name).ToArrayAsync();
                 
@@ -55,11 +55,11 @@ namespace server.Data
 
         public async Task<bool> SaveAllAsync()
         {
-            // _logger.LogInformation($"Attempting to save changesd to the context.");
+            // _logger.LogInformation($"Attempting to save changed to the context.");
             // return (await _dbContext.SaveChangesAsync() > 0);
             try
             {
-                _logger.LogInformation($"Attempting to save changesd to the context.");
+                _logger.LogInformation("Attempting to save changes to the context.");
                 return await _dbContext.SaveChangesAsync() > 0;
             }
             catch (Exception ex)
