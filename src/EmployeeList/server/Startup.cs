@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.AspNetCore.Mvc.Versioning.Conventions;
-using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,7 +19,6 @@ using Microsoft.Extensions.Options;
 using server.Data;
 using server.Data.Entites;
 using server.Dtos;
-using server.Models;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace server
@@ -95,7 +93,7 @@ namespace server
                 app.UseHsts();
             }
 
-            AutoMapper.Mapper.Initialize(mapper =>
+            Mapper.Initialize(mapper =>
             {
                 mapper.ValidateInlineMaps = false;
                 mapper.CreateMissingTypeMaps = true;
@@ -129,7 +127,7 @@ namespace server
 
             app.UseMvc(routes => {
 
-                // comment out MapRoute when using Angular build files in wwwroot
+                // comment out routes.MapRoute when using Angular build files in wwwroot
                 routes.MapSpaFallbackRoute(
                     name: "spa-fallback",
                     defaults: new { controller = "Fallback", action = "Index"} 
