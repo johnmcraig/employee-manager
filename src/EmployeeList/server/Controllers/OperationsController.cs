@@ -1,10 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-//using server.Models;
 
 namespace server.Controllers
 {
@@ -19,7 +15,7 @@ namespace server.Controllers
             _config = config;
         }
 
-        [HttpOptions("reloadconfig")]
+        [HttpOptions("reload config")]
         public IActionResult ReloadConfig()
         {
             try
@@ -30,7 +26,7 @@ namespace server.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Enternal server error: {ex}"); 
+                return StatusCode(500, $"Internal server error: {ex}"); 
             }
         }
 
