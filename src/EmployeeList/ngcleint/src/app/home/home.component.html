@@ -1,31 +1,35 @@
-<div class="container">
-  <h2 style="text-align:center;">Welcome to the Employee Entry Form</h2>
-  <br />
+
+  <header>
+    <h1 style="text-align: center;margin-top: auto; font-weight: 600; font-size: 40px;">Employee Data Entry Form</h1>
+    <h4 style="text-align: center;">A demonstration of ASP.Net Core 2.2 and Angular 7</h4>
+  </header>
 
   <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Add Employees to the Database</h4>
-        <p class="card-text">
-          Navigate to a from entry page to add employees to the database using the link provided below:
-        </p>
-        <a [routerLink]="['/employee/create']" class="card-link"
-          >Go to the Employee Form Entry</a
-        >
-      </div>
+    <div class="card-body">
+      <h4 class="card-title">Add Employees to the Database</h4>
+      <p class="card-text">
+        Navigate to a from entry page to add employees to the database using the
+        link provided below:
+      </p>
+      <a [routerLink]="['/employee/create']" class="card-link"
+        >Go to the Employee Form Entry</a
+      >
     </div>
+  </div>
 
   <div class="card">
     <div class="card-body">
       <h4 class="card-title">View List of Current Employees</h4>
       <p class="card-text">
-        Navigate to see a list of all existing employees using the link provided below:
+        Navigate to see a list of all existing employees using the link provided
+        below:
       </p>
       <a [routerLink]="['/emplyee/list']" class="card-link"
         >Go to the Employee List</a
       >
     </div>
   </div>
-<!--
+  <!--
   <div class="row">
     <div class="col col-lg-12">
       <h3>Add Employees to the Database</h3>
@@ -51,4 +55,3 @@
     </div>
   </div>
 -->
-</div>
