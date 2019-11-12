@@ -64,7 +64,7 @@ export class EmployeeCreateComponent implements OnInit {
     this.repo.create(apiUrl, employee)
       .subscribe(res => {
         // $('#successModal').modal('show');
-        //  document.getElementById('successModal').click();
+        // document.getElementById('successModal').click();
         this.router.navigate(['employee/list']);
       },
       (error => {
