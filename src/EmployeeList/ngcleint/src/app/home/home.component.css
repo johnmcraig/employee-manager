@@ -8,3 +8,11 @@
   padding: 0.5px;
   margin: 1.5rem;
 }
+
+header {
+  background-color: #3274d3; 
+  color: #fff;
+  min-height: 250px;
+  align-items: center;
+  /* display: flex; */
+}
