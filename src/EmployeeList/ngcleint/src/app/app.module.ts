@@ -13,21 +13,28 @@ import { EnvironmentUrlService } from './shared/services/environment-url.service
 import { InternalErrorComponent } from './error-pages/internal-error/internal-error.component';
 import { ErrorHandlerService } from './shared/services/error-handler.service';
 import * as $ from 'jquery';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    NavbarComponent,
-    NotfoundComponent,
-    InternalErrorComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-  ],
-  providers: [EnvironmentUrlService, ErrorHandlerService],
-  bootstrap: [AppComponent]
+   declarations: [
+      AppComponent,
+      HomeComponent,
+      NavbarComponent,
+      NotfoundComponent,
+      InternalErrorComponent,
+      FooterComponent
+   ],
+   imports: [
+      BrowserModule,
+      AppRoutingModule,
+      HttpClientModule
+   ],
+   providers: [
+      EnvironmentUrlService,
+      ErrorHandlerService
+   ],
+   bootstrap: [
+      AppComponent
+   ]
 })
 export class AppModule { }
