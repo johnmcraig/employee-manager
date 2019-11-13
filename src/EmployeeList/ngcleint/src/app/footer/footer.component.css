@@ -3,6 +3,11 @@ footer {
     text-align: center;
     width: 100%;
     color: #fff;
-    padding-top: 55px;
-    bottom: auto;
+    /* bottom: auto; */
+}
+
+.footer {
+    /* background-color: lightgrey; */
+    height: 60px;
+    padding: 20px;
 }
