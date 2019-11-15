@@ -1,13 +1,37 @@
 footer {
     position: absolute;
-    text-align: center;
     width: 100%;
-    color: #fff;
-    /* bottom: auto; */
 }
 
-.footer {
-    /* background-color: lightgrey; */
-    height: 60px;
-    padding: 20px;
+.main-footer {
+    background: #0e0e0e;
+    padding: 50px 0 0;
+    color: #fff;
+    display: block;
+    box-sizing: border-box;
+}
+
+.col-md-6 {
+    max-width: 50%;
+}
+
+.container {
+    max-width: 1140px;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.copyright {
+    margin-bottom: 0;
+}
+
+p {
+    margin-top: 0;
+}
+
+a {
+    color: inherit;
 }
