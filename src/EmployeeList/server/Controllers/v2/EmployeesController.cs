@@ -14,11 +14,13 @@ namespace server.Controllers.v2
     public class EmployeesController : ControllerBase
     {
         private readonly IEmployeeRepository _repo;
+        private readonly IMapper _mapper;
         
 
-        public EmployeesController(IEmployeeRepository repo)
+        public EmployeesController(IEmployeeRepository repo, IMapper mapper)
         {
             _repo = repo;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -81,31 +83,31 @@ namespace server.Controllers.v2
         }
 
         [HttpPut("{id}", Name = nameof(UpdateEmployee))]
-        public async Task<ActionResult<EmployeeUpdateDto>> UpdateEmployee([FromRoute] Guid id, [FromBody] EmployeeUpdateDto employeeToUpdate)
+        public async Task<ActionResult> UpdateEmployee([FromRoute] Guid id, [FromBody] EmployeeUpdateDto employeeToUpdate)
         {
-            try
+            try 
             {
+                var employeeFromRepo = await _repo.GetEmployeeAsync(id);
+
+                if (employeeFromRepo == null) return NotFound();
+
+                _mapper.Map(employeeToUpdate, employeeFromRepo);
+
                 if(employeeToUpdate == null) return BadRequest();
 
-                var existingEmployee = _repo.GetEmployeeAsync(id);
-
-                if(existingEmployee == null) return NotFound();
-
-                await Mapper.Map(employeeToUpdate, existingEmployee);
-
-               if(await _repo.SaveAllAsync())
-               {
-                   return Ok(Mapper.Map<EmployeeUpdateDto>(existingEmployee));
-               }
-               else
-               {
-                   return BadRequest("Could not save changes");
-               }
-                
+                if(await _repo.SaveAllAsync())
+                {
+                    return Ok(_mapper.Map<EmployeeUpdateDto>(employeeFromRepo));
+                }
+                else
+                {
+                    return BadRequest("Could not save changes");
+                }
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Internal server error: {ex}");
+                // throw new Exception($"Update employee with {id} failed to save");
             }
         }
 
