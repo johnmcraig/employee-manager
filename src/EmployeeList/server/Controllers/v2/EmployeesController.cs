@@ -14,13 +14,10 @@ namespace server.Controllers.v2
     public class EmployeesController : ControllerBase
     {
         private readonly IEmployeeRepository _repo;
-        private readonly IMapper _mapper;
         
-
-        public EmployeesController(IEmployeeRepository repo, IMapper mapper)
+        public EmployeesController(IEmployeeRepository repo)
         {
             _repo = repo;
-            _mapper = mapper;
         }
 
         [HttpGet]
@@ -91,13 +88,13 @@ namespace server.Controllers.v2
 
                 if (employeeFromRepo == null) return NotFound();
 
-                _mapper.Map(employeeToUpdate, employeeFromRepo);
+                Mapper.Map(employeeToUpdate, employeeFromRepo);
 
                 if(employeeToUpdate == null) return BadRequest();
 
                 if(await _repo.SaveAllAsync())
                 {
-                    return Ok(_mapper.Map<EmployeeUpdateDto>(employeeFromRepo));
+                    return Ok(Mapper.Map<EmployeeUpdateDto>(employeeFromRepo));
                 }
                 else
                 {
