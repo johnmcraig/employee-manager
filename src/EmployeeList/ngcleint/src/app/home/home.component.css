@@ -5,18 +5,17 @@
 }
 
 .card {
-  padding: 0.5px;
-  margin: 1.5rem;
+  margin: 2rem;
 }
 
 header {
   background-color: #3274d3; 
   color: #fff;
-  min-height: 250px;
+  min-height: 225px;
   align-items: center;
-  /* display: flex; */
 }
 
 header h1 {
-  padding-top: 75px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
