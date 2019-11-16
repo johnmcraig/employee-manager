@@ -34,4 +34,9 @@ export class EmployeeDetailsComponent implements OnInit {
     });
   }
 
+  public redirectToUpdatePage(id: any) {
+    const updateUrl = `employee/update/${id}`;
+    this.router.navigate([updateUrl]);
+  }
+
 }
