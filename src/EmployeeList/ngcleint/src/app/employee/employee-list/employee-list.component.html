@@ -1,14 +1,20 @@
-<div class="row">
-  <div class="col-md-offset-10 col-md-2">
-    <a [routerLink]="['/employee/create']">Add Employee</a>
+<div class="container-fluid" style="margin-top: 25px;">
+
+  <div class="row">
+    <div class=" col-md-6">
+      <a class="btn btn-md btn-success" [routerLink]="['/employee/create']">Add An Employee</a>
+    </div>
+
+    <div class="col-md-6">
+        <a class="btn btn-md btn-primary" [routerLink]="['/home']">Return to the Home page</a>
+    </div> 
   </div>
-</div>
-<br />
+
 <div class="row">
   <div class="col-md-12">
     <div class="table-responsive">
       <table class="table table-striped">
-        <thead>
+        <thead class="table-dark">
           <tr>
             <th>Employee Name</th>
             <th>Employee's Email</th>
@@ -22,25 +28,31 @@
           <tr *ngFor="let employee of employees">
             <td>{{ employee.name }}</td>
             <td>{{ employee.email }}</td>
-            <td>{{ employee.startDate | date: "dd/MM/yyyy" }}</td>
+            <td>{{ employee.startDate | date: "MM/dd/yyyy" }}</td>
             <td>
               <button
                 type="button"
                 id="details"
-                class="btn btn-secondary"
+                class="btn btn-sm btn-secondary"
                 (click)="getEmployeeDetails(employee.id)"
               >
                 Details
               </button>
             </td>
             <td>
-              <button type="button" id="update" class="btn btn-success"
+              <button 
+              type="button" 
+              id="update" 
+              class="btn btn-sm btn-success"
               (click)="redirectToUpdatePage(employee.id)">
                 Update
               </button>
             </td>
             <td>
-              <button type="button" id="delete" class="btn btn-danger"
+              <button 
+              type="button" 
+              id="delete" 
+              class="btn btn-sm btn-danger"
               (click)="redirectToDeletePage(employee.id)">
                 Delete
               </button>
@@ -50,4 +62,6 @@
       </table>
     </div>
   </div>
+</div>
+
 </div>
