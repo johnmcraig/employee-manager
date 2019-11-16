@@ -1,11 +1,13 @@
 footer {
-    position: absolute;
+    position: fixed;
+    bottom: 0;
     width: 100%;
 }
 
-.main-footer {
-    background: #0e0e0e;
-    padding: 50px 0 0;
+.footer {
+    padding: 20px;
+    margin: 0 0;
+    background-color: #0e0e0e;
     color: #fff;
     display: block;
     box-sizing: border-box;
@@ -15,14 +17,14 @@ footer {
     max-width: 50%;
 }
 
-.container {
+/* .container {
     max-width: 1140px;
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-}
+} */
 
 .copyright {
     margin-bottom: 0;
