@@ -1,18 +1,18 @@
-# Employee List
+# Employee Data Entry
 
-> An employee data form with full CRUD functionality using Vue.js and/or Angular 8 with and Asp.Net Core
+> An employee data form with full CRUD functionality using Angular v8 for the UI and Asp.Net Core for web Api
 
 ## Scope
 
-This is a project to demonstrate extending conecepts into larger projects. It is an employee contact form for data entry using Vue SPA or Angular SPA front-end.
+This is a project to demonstrate extending concepts into larger projects. It is an employee contact form for data entry using Vue SPA or Angular SPA front-end.
 
 ## Development Stack
 
 The application was built using the following:
 
 - ASP.Net Core 2.2
-- Vue.js v2.6
 - Angular 8
+- PostgreSQL Database
 
 ## Built-in Endpoint Testing
 
@@ -23,9 +23,9 @@ After launching the project in a local environment, navigate to `https://localho
 
 In order to test/use this application, you will need the following:
 
-- Asp.Net Core 2.0 SDK, prefereably 2.2.1
+- Asp.Net Core 2.0 SDK, preferably 2.2.1
 - Node.js version 8 or higher
-- The Vue or Angular CLI
+- The Angular CLI
 
 ## Installation
 
@@ -41,25 +41,23 @@ After cloning or unzipping the files, navigate to the directory containing the s
 ~$ cd src/EmployeeList/
 ```
 
-In either order, navigate to the client or api/server side files and install their dependecies. Once again, you will need Node.js and `npm` installed along with the .Net Core 2.2 SDK.
+In either order, navigate to the client or api/server side files and install their dependencies. Once again, you will need Node.js and `npm` installed along with the .Net Core 2.2 SDK.
 
-For client side dependecies:
+For client side dependencies:
 
 ```sh
 ~$ cd src/EmployeeList/client
 ~$ npm install
 ```
 
-Make sure the `@vue/cli` or `@anguilar\cli` is installed as well:
+Make sure the `@angular\cli` is installed as well:
 
 ```sh
-# for Vue
-~$ npm install -g @vue/cli
 # for Angular
 ~$ npm install -g @angular/cli @angular/core
 ```
 
-For server side code, build and restore dependecies and NuGet packages:
+For server side code, build and restore dependencies and NuGet packages:
 
 ```sh
 ~$ cd src/EmployeeList/server/
@@ -72,14 +70,11 @@ To run a local environment on the client side:
 Use `npm` script commands in a terminal/command box while in the `../client` directory:
 
 ```sh
-# for Vue client
-~$ npm run watch
-
 # for Angular client
-~$ ng serve
+~$ ng build -options
 ```
 
-This outputs a minified JavaScript file in the `wwwroot/dist` directory of the API.
+This outputs a minified JavaScript file in the `wwwroot` directory of the API.
 
 To run a local environment on the server side:
 Use the `dotnet <COMMAND> <OPTIONS>` tool to run it in a terminal or use Visual Studio to run it with `CTL` + `F5`
@@ -93,4 +88,6 @@ Navigate to localhost:5001 in a browser to see the current build running.
 
 ## Known Issues and Bugs
 
-- The Update action in the controller endpoint class under ApiVersion 2 (i.e. api/v2/endpoint) has an issue with sending successful requests to the server due to AutoMapper not able to bind the `EmployeeDto` to the `EmployeeUpdateDto`, so it is using the context class instead on version 1 under `/v1/...` route.
+- ~~The Update action in the controller endpoint class under ApiVersion 2 (i.e. api/v2/endpoint) has an issue with sending successful requests to the server due to AutoMapper not able to bind the `EmployeeDto` to the `EmployeeUpdateDto`, so it is using the context class instead on version 1 under `/v1/...` route.~~ (issue has been fixed)
+
+- No issues found at this time.
