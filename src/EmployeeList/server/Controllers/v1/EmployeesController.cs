@@ -30,7 +30,6 @@ namespace server.Controllers.v1
             }
             catch (Exception ex)
             {
-                
                 return StatusCode(500, $"Internal server Error: {ex}");
             }
         }
@@ -79,7 +78,7 @@ namespace server.Controllers.v1
         {   
             if(!ModelState.IsValid) return BadRequest(ModelState);
 
-            if(id != employee.Id) return BadRequest(); // return NotFound($"Could not find employee by id: {id}");
+            if(id != employee.Id) return BadRequest();
             
             _dbContext.Entry(employee).State = EntityState.Modified;
 
@@ -87,14 +86,12 @@ namespace server.Controllers.v1
             {
                 await _dbContext.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException) //(Exception ex)
+            catch (DbUpdateConcurrencyException)
             {
                 if(!EmployeeExists(id))
                     return NotFound($"Could not find Employee by {id}");
                 else
                     throw;
-
-                // return StatusCode(500, $"Internal server Error: {ex}");
             }
 
             return NoContent();
