@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using server.Data.Entites;
+using server.Data.Entities;
 
 namespace server.Data
 {

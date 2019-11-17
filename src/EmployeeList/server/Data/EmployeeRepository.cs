@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using server.Data.Entites;
+using server.Data.Entities;
 
 namespace server.Data
 {

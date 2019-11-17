@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using server.Data;
-using server.Data.Entites;
+using server.Data.Entities;
 using server.Dtos;
 
 namespace server.Controllers.v2

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using server.Data;
-using server.Data.Entites;
+using server.Data.Entities;
 
 namespace server.Controllers.v1
 {
