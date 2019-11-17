@@ -17,7 +17,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using server.Data;
-using server.Data.Entites;
+using server.Data.Entities;
 using server.Dtos;
 using Swashbuckle.AspNetCore.Swagger;
 
@@ -127,21 +127,10 @@ namespace server
 
             app.UseMvc(routes => {
 
-                // comment out routes.MapRoute when using Angular build files in wwwroot
                 routes.MapSpaFallbackRoute(
                     name: "spa-fallback",
                     defaults: new { controller = "Fallback", action = "Index"} 
                 );
-                // uncomment below to use Vue build files in wwwroot
-                // routes.MapRoute(
-                //     name: "Root",
-                //     template: "",
-                //     defaults: new { controller = "Root", action = "Index"});
-
-                // routes.MapRoute(
-                //     name: "default",
-                //     template: "{controller=Home}/{action=Index/{id?}",
-                //     defaults: new { controller = "Home", action = "Index" });
             });
         }
     }
