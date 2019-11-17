@@ -74,9 +74,8 @@ namespace server.Controllers.v2
             {
                 return StatusCode(500, $"Internal server error: {ex}");
             }
-
+            
             return BadRequest();
-
         }
 
         [HttpPut("{id}", Name = nameof(UpdateEmployee))]
