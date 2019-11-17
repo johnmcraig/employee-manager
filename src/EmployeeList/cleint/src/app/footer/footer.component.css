@@ -2,15 +2,14 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+    z-index: 5;
+    background-color: #0e0e0e;
+    color: #fff;
+    display: flex;
 }
 
 .footer {
-    padding: 20px;
     margin: 0 0;
-    background-color: #0e0e0e;
-    color: #fff;
-    display: block;
-    box-sizing: border-box;
 }
 
 .col-md-6 {
