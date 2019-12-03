@@ -21,13 +21,23 @@ namespace integrationtests
             var client = _factory.CreateClient();
 
             //Act
-            var response = await TestClient.GetAsync(url);
+            var response = await client.GetAsync(url);
 
             //Assert
             response.EnsureSuccessStatusCode();
 
             Assert.Equal("text/html; charset=utf-8", 
                 response.Content.Headers.ContentType.ToString());
+        }
+        
+        [Fact]
+        public async Task GetAll_WithReturnList()
+        {
+            //Arrang
+
+            //Act
+
+            //Assert
         }
     }
 }
