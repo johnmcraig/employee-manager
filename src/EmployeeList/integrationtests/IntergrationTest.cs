@@ -31,15 +31,5 @@ namespace integrationtests
 
             TestClient = appFactory.CreateClient();
         }
-
-        protected async Task AuthenticateAsync()
-        {
-            TestClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", await GetJwtAsync());
-        }
-
-        protected async Task<string> GetJwtAsync()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
