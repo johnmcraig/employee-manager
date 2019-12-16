@@ -1,6 +1,6 @@
-# Employee Data Entry
+# Data Entry System
 
-> An employee data form with full CRUD functionality using Angular v8 for the UI and Asp.Net Core for web Api
+> A data entry form with full CRUD functionality using Angular version 8 for front end UI and Asp.Net Core for a back end web Api.
 
 ## Scope
 
