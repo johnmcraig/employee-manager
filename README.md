@@ -4,7 +4,7 @@
 
 ## Scope
 
-This is a project to demonstrate extending concepts into larger projects. It is an employee contact form for data entry using Vue SPA or Angular SPA front-end.
+This is a project to demonstrate extending concepts into larger projects. It is an employee contact form for data entry using Angular SPA front-end.
 
 ## Development Stack
 
