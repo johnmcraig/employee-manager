@@ -8,10 +8,10 @@ This is a project to demonstrate extending concepts into larger projects. It is 
 
 ## Development Stack
 
-The application was built using the following:
+The application was built using the following tools & frameworks:
 
 - ASP.Net Core 2.2
-- Angular 8
+- Angular version 8.3
 - PostgreSQL Database
 
 ## Built-in Endpoint Testing
@@ -74,7 +74,7 @@ Use `npm` script commands in a terminal/command box while in the `../client` dir
 ~$ ng build -options
 ```
 
-This outputs a minified JavaScript file in the `wwwroot` directory of the API.
+This outputs a minified JavaScript file in the `wwwroot` directory of the API via the `angular.json` scripts.
 
 To run a local environment on the server side:
 Use the `dotnet <COMMAND> <OPTIONS>` tool to run it in a terminal or use Visual Studio to run it with `CTL` + `F5`
