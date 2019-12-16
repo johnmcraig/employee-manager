@@ -16,7 +16,7 @@ namespace server.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(_config.GetConnectionString("DefaultConnection"));
+            optionsBuilder.UseNpgsql(_config.GetConnectionString("db"));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
