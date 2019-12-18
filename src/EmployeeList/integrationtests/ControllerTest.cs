@@ -1,12 +1,11 @@
 using System.Threading.Tasks;
-using server.Controllers.v2;
 using Xunit;
 using Microsoft.AspNetCore.Mvc.Testing;
 using server;
 
 namespace integrationtests
 {
-    public class ControllerTest : IntergrationTest
+    public class ControllerTest : IntegrationTest
     {
         private readonly WebApplicationFactory<Startup> _factory;
         public ControllerTest(WebApplicationFactory<Startup> factory)
@@ -33,7 +32,7 @@ namespace integrationtests
         [Fact]
         public async Task GetAll_WithReturnList()
         {
-            //Arrang
+            //Arrange
 
             //Act
 
