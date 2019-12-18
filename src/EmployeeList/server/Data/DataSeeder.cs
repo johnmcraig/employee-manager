@@ -18,7 +18,7 @@ namespace server.Data
         {   
             await _dbContext.Database.EnsureCreatedAsync();
 
-            if(_dbContext.Employees.Count() == 0)
+            if(!_dbContext.Employees.Any())
             {
                 SeedEmployees();
                 await _dbContext.SaveChangesAsync();
