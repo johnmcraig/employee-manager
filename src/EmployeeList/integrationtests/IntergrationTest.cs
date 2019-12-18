@@ -11,10 +11,10 @@ using System;
 
 namespace integrationtests
 {
-    public class IntergrationTest
+    public class IntegrationTest
     {
         protected readonly HttpClient TestClient;
-        protected IntergrationTest()
+        protected IntegrationTest()
         {
             var appFactory = new WebApplicationFactory<Startup>()
                 .WithWebHostBuilder(builder => 
