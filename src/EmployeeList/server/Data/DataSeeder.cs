@@ -9,23 +9,24 @@ namespace server.Data
     public class DataSeeder
     {
         private readonly EmployeeDbContext _dbContext;
-
         public DataSeeder(EmployeeDbContext dbContext)
         {
             _dbContext = dbContext;
         }
-        public async Task SeedData()
+        
+        public static void SeedData(EmployeeDbContext _dbContext)
         {   
-            await _dbContext.Database.EnsureCreatedAsync();
+            _dbContext.Database.EnsureCreated();
 
             if(!_dbContext.Employees.Any())
             {
-                SeedEmployees();
-                await _dbContext.SaveChangesAsync();
+                SeedEmployees(); 
             }
+
+            _dbContext.SaveChanges();
         }
 
-        private void SeedEmployees()
+        private static void SeedEmployees()
         {
             var employees = new List<Employee>()
             {
@@ -54,8 +55,6 @@ namespace server.Data
                    StartDate = new DateTime(2016, 06, 20)
                }
             };
-
-            _dbContext.Employees.AddRangeAsync(employees);
         }
     }
 }
