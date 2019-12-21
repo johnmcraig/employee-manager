@@ -61,7 +61,7 @@ namespace server
                     {
                         options.SwaggerDoc(description.GroupName, new Info
                         { 
-                            Title = $"Sample API {description.ApiVersion}", 
+                            Title = $"Test Employee API {description.ApiVersion}", 
                             Version = description.ApiVersion.ToString() 
                         });
                     }
@@ -76,12 +76,10 @@ namespace server
                     options.ApiVersionReader = new HeaderApiVersionReader("api-version");
             });
 
-            services.AddTransient<DataSeeder>();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, DataSeeder seedData, IApiVersionDescriptionProvider provider)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IApiVersionDescriptionProvider provider)
         {
             if (env.IsDevelopment())
             {
@@ -119,8 +117,6 @@ namespace server
             });
 
             app.UseCors("CorsPolicy");
-
-            seedData.SeedData().Wait();
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
