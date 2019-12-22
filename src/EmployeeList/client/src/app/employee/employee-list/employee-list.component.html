@@ -18,7 +18,7 @@
           <tr>
             <th>Employee Name</th>
             <th>Employee's Email</th>
-            <th>Start Date</th>
+            <th>Phone Number</th>
             <th>Details</th>
             <th>Update</th>
             <th>Delete</th>
@@ -28,7 +28,7 @@
           <tr *ngFor="let employee of employees">
             <td>{{ employee.name }}</td>
             <td>{{ employee.email }}</td>
-            <td>{{ employee.startDate | date: "MM/dd/yyyy" }}</td>
+            <td>{{ employee.phoneNumber }}</td>
             <td>
               <button
                 type="button"

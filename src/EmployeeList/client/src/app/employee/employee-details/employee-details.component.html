@@ -19,19 +19,28 @@
 
   <div class="row">
     <div class="col-md-3">
-      <strong>Start Date:</strong>
+      <strong>Position:</strong>
     </div>
     <div class="col-md-3">
-      {{ employee?.startDate | date: "MM/dd/yyyy" }}
+      {{ employee?.position }}
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-3">
-      <strong>Position:</strong>
+      <strong>Phone:</strong>
     </div>
     <div class="col-md-3">
-      {{ employee?.position }}
+      {{ employee?.phoneNumber }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <strong>Start Date:</strong>
+    </div>
+    <div class="col-md-3">
+      {{ employee?.startDate | date: "MM/dd/yyyy" }}
     </div>
   </div>
 
