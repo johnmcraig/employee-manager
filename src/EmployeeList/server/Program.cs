@@ -24,9 +24,9 @@ namespace server
                 var services = scope.ServiceProvider;
                 try
                 {
-                    var _dbContext = services.GetRequiredService<EmployeeDbContext>();
-                    _dbContext.Database.Migrate();
-                    DataSeeder.SeedData(_dbContext);
+                    var dbContext = services.GetRequiredService<EmployeeDbContext>();
+                    dbContext.Database.Migrate();
+                    DataSeeder.SeedData(dbContext);
                 }
                 catch (Exception ex)
                 {
