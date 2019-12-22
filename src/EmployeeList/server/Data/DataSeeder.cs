@@ -2,59 +2,28 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using server.Data.Entities;
 
 namespace server.Data
 {
     public class DataSeeder
-    {
-        private readonly EmployeeDbContext _dbContext;
-        public DataSeeder(EmployeeDbContext dbContext)
-        {
-            _dbContext = dbContext;
-        }
-        
-        public static void SeedData(EmployeeDbContext _dbContext)
+    {   
+        public static void SeedData(EmployeeDbContext dbContext)
         {   
-            _dbContext.Database.EnsureCreated();
-
-            if(!_dbContext.Employees.Any())
+            if(!dbContext.Employees.Any())
             {
-                SeedEmployees(); 
+                var employeeData = System.IO.File.ReadAllText("Data/EmployeeSeed.json");
+                var employees = JsonConvert.DeserializeObject<List<Employee>>(employeeData);
+
+                foreach (var employee in employees)
+                {
+                    dbContext.Employees.Add(employee);
+                }
+                
             }
 
-            _dbContext.SaveChanges();
-        }
-
-        private static void SeedEmployees()
-        {
-            var employees = new List<Employee>()
-            {
-                new Employee
-                {
-                   Id = Guid.NewGuid(),
-                   Name = "Richard Hendricks",
-                   Email = "contact@richardhendrinks.com",
-                   Position = "Sales",
-                   StartDate = new DateTime(2014, 04, 22)
-                },
-               new Employee
-               {
-                   Id = Guid.NewGuid(),
-                   Name = "Bertram Gilfoye",
-                   Email = "contact@bertramgilfoye.com",
-                   Position = "HR Manager",
-                   StartDate = new DateTime(2015, 06, 12)
-               },
-               new Employee
-               {
-                   Id = Guid.NewGuid(),
-                   Name = "Denish Chugtai",
-                   Email = "contact@denishchutai.com",
-                   Position = "Data Analyst",
-                   StartDate = new DateTime(2016, 06, 20)
-               }
-            };
+            dbContext.SaveChanges();
         }
     }
 }
