@@ -1,15 +1,21 @@
 footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    z-index: 5;
-    background-color: #0e0e0e;
-    color: #fff;
-    display: flex;
+    border: 0;
+    margin-top: 100%;
+    line-height: 13.8px;
+    position: static;
+    font: inherit;
+    font-size: 100%;
+    z-index: auto;
+    display: block;
+    float: none;
+    box-sizing: border-box;
 }
 
 .footer {
-    margin: 0 0;
+    color: #fff;
+    background-color: #303238;
+    text-align: center;
+    padding: 1rem;
 }
 
 .col-md-6 {
