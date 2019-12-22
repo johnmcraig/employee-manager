@@ -25,7 +25,8 @@ export class EmployeeUpdateComponent implements OnInit {
       name: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       startDate: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.maxLength(200)]),
-      position: new FormControl('', [Validators.required, Validators.maxLength(60)])
+      position: new FormControl('', [Validators.required, Validators.maxLength(60)]),
+      phoneNumber: new FormControl('', [Validators.required])
     });
 
     this.getEmployeeById();
@@ -58,6 +59,7 @@ export class EmployeeUpdateComponent implements OnInit {
     this.employee.position = employeeFormValue.position;
     this.employee.startDate = employeeFormValue.startDate;
     this.employee.email = employeeFormValue.email;
+    this.employee.phoneNumber = employeeFormValue.phoneNumber;
 
     const apiUrl = `employees/${this.employee.id}`;
     this.repo.update(apiUrl, this.employee).subscribe(res => {
