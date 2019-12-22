@@ -14,6 +14,8 @@ namespace server.Data.Entities
         
         [Required(ErrorMessage = "A valid email is required")]
         public string Email { get; set; }
+
+        public string PhoneNumber { get; set; }
         
         public string Position { get; set; }
         
