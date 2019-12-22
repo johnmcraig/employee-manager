@@ -24,7 +24,8 @@ export class EmployeeCreateComponent implements OnInit {
       name: new FormControl('', [Validators.required, Validators.maxLength(60)]),
       startDate: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-      position: new FormControl('', [Validators.required, Validators.maxLength(60)])
+      position: new FormControl('', [Validators.required, Validators.maxLength(60)]),
+      phoneNumber: new FormControl('', [Validators.required])
     });
   }
 
@@ -52,12 +53,13 @@ export class EmployeeCreateComponent implements OnInit {
     }
   }
 
-  private executeEmployeeCreation(employeeFormValue: { name: any; startDate: Date; email: any; position: any; }) {
+  private executeEmployeeCreation(employeeFormValue: { name: any; startDate: Date; email: any; position: any; phoneNumber: any; }) {
     const employee: EmployeeForCreating = {
       name: employeeFormValue.name,
       position: employeeFormValue.position,
       startDate: employeeFormValue.startDate,
-      email: employeeFormValue.email
+      email: employeeFormValue.email,
+      phoneNumber: employeeFormValue.phoneNumber
     };
 
     const apiUrl = 'employees/';
