@@ -3,11 +3,10 @@
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 html, body { 
-    height: 100%;   
-}
-
-body {
-    margin-bottom: 275px;
-	padding: 0;
+    height: 100%;
+    padding: 0;
     border: 0;
+    margin: 0;
+    font: inherent;
+    font-size: 100%; 
 }
