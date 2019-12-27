@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Mvc.Versioning;
@@ -36,6 +37,14 @@ namespace server
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<EmployeeDbContext>();
+
+            services.AddIdentity<IdentityUser, IdentityRole>(opt => {
+                opt.Password.RequireDigit = true;
+                opt.Password.RequiredLength = 8;
+                opt.Password.RequireUppercase = false;
+                opt.Password.RequireNonAlphanumeric = false;
+
+            }).AddEntityFrameworkStores<EmployeeDbContext>();
 
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
