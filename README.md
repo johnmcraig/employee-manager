@@ -1,6 +1,6 @@
 # Data Entry System
 
-> A data entry form with full CRUD functionality using Angular version 8 for front end UI and Asp.Net Core for a back end web Api.
+> A data entry form with full CRUD functionality using Angular v8 for front end UI and Asp.Net Core for a back end web Api.
 
 ## Scope
 
