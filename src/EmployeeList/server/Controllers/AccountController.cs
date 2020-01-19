@@ -14,7 +14,7 @@ namespace server.Controllers
         }
 
         [HttpGet]
-        public IActionResult Loig() => View();
+        public IActionResult Login() => View();
 
         [HttpPost]
         public IActionResult Login(string username, string password)
