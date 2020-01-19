@@ -28,15 +28,5 @@ namespace integrationtests
             Assert.Equal("text/html; charset=utf-8", 
                 response.Content.Headers.ContentType.ToString());
         }
-        
-        [Fact]
-        public async Task GetAll_WithReturnList()
-        {
-            //Arrange
-
-            //Act
-
-            //Assert
-        }
     }
 }
