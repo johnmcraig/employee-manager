@@ -1,0 +1,21 @@
+.container {
+  width: 100%;
+  padding: 0.5rem;
+  margin: 2rem;
+}
+
+.card {
+  margin: 2rem;
+}
+
+header {
+  background-color: #3274d3; 
+  color: #fff;
+  min-height: 225px;
+  align-items: center;
+}
+
+header h1 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
