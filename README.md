@@ -4,7 +4,7 @@
 
 ## Scope
 
-This is a project to demonstrate extending concepts into larger projects. It is an employee management system with form validation using Angular and ASP.Net Core. The concepts is to familiarize and combine a popular JavaScript framework with C#/ASP.Net Core, while providing Api Versioning, Controller End point testing build in, and setup integration tests for future feature implementations.
+This is a project to demonstrate extending concepts into larger projects. It is an employee management system with form validation using Angular and ASP.Net Core. The concepts is to familiarize and combine a popular JavaScript framework with C#/ASP.Net Core, while providing Api Versioning, Controller End-point testing, and setup integration tests for future feature implementations.
 
 ## Development Stack
 
