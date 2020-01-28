@@ -1,10 +1,10 @@
-# Data Entry System
+# Employee Manager
 
-> A data entry form with full CRUD functionality using Angular v8 for front end UI and Asp.Net Core for a back end web Api.
+> A management system using Angular version 8 for front end UI and Asp.Net Core for a back end web Api.
 
 ## Scope
 
-This is a project to demonstrate extending concepts into larger projects. It is an employee contact form for data entry using Angular SPA front-end.
+This is a project to demonstrate extending concepts into larger projects. It is an employee management system with form validation using Angular and ASP.Net Core. The concepts is to familiarize and combine a popular JavaScript framework with C#/ASP.Net Core, while providing Api Versioning, Controller End point testing build in, and setup integration tests for future feature implementations.
 
 ## Development Stack
 
@@ -89,5 +89,3 @@ Navigate to localhost:5001 in a browser to see the current build running.
 ## Known Issues and Bugs
 
 - ~~The Update action in the controller endpoint class under ApiVersion 2 (i.e. api/v2/endpoint) has an issue with sending successful requests to the server due to AutoMapper not able to bind the `EmployeeDto` to the `EmployeeUpdateDto`, so it is using the context class instead on version 1 under `/v1/...` route.~~ (issue has been fixed)
-
-- No issues found at this time.
