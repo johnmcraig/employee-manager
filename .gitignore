@@ -339,4 +339,5 @@ ASALocalRun/
 wwwroot/client/**/*
 wwwroot/dist/**/*
 wwwroot/**/*
+wwwroot/
 package-lock.json
