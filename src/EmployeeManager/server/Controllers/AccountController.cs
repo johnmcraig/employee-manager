@@ -1,8 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using server.Data;
 
-namespace server.Controllers 
+namespace server.Controllers
 {
     public class AccountController : Controller 
     {

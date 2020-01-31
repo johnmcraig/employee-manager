@@ -14,6 +14,7 @@ namespace integrationtests
         }
 
         [Theory]
+        [InlineData("")]
         public async Task GetEndpoints_ReturnsSuccessResponse(string url)
         {
             //Arrange
