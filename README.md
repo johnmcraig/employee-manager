@@ -6,13 +6,16 @@
 
 This is a project to demonstrate extending concepts into larger projects. It is an employee management system with form validation using Angular and ASP.Net Core. The concepts is to familiarize and combine a popular JavaScript framework with C#/ASP.Net Core, while providing Api Versioning, Controller End-point testing, and setup integration tests for future feature implementations.
 
+The use of Data transfer objects (Dtos) using [Auto Mapper](https://automapper.org/) protects and maps the original entity classes found in the `Data\Entities` directory of the Api to classes for specific tasks, i.e. fetch, create, and edit.
+
 ## Development Stack
 
 The application was built using the following tools & frameworks:
 
-- ASP.Net Core 2.2
+- C#/ASP.Net Core 2.2
 - Angular version 8.3
-- PostgreSQL Database
+- Bootstrap 4
+- SQL Server or PostgreSQL Database (easily configured in DbContext class)
 
 ## Built-in Endpoint Testing
 
@@ -26,19 +29,20 @@ In order to test/use this application, you will need the following:
 - Asp.Net Core 2.0 SDK, preferably 2.2.1
 - Node.js version 8 or higher
 - The Angular CLI
+- Microsoft SQL Server or pgAdmin for PostgreSQL
 
 ## Installation
 
 Grab the repository either by downloading the zip file or clone the project:
 
 ```sh
-~$ git clone https://github.com/johnmcraig/employee-list
+~$ git clone https://github.com/johnmcraig/employee-manager
 ```
 
 After cloning or unzipping the files, navigate to the directory containing the solution file:
 
 ```sh
-~$ cd src/EmployeeList/
+~$ cd src/EmployeeManager/
 ```
 
 In either order, navigate to the client or api/server side files and install their dependencies. Once again, you will need Node.js and `npm` installed along with the .Net Core 2.2 SDK.
@@ -46,7 +50,7 @@ In either order, navigate to the client or api/server side files and install the
 For client side dependencies:
 
 ```sh
-~$ cd src/EmployeeList/client
+~$ cd src/EmployeeManager/client
 ~$ npm install
 ```
 
@@ -60,7 +64,7 @@ Make sure the `@angular\cli` is installed as well:
 For server side code, build and restore dependencies and NuGet packages:
 
 ```sh
-~$ cd src/EmployeeList/server/
+~$ cd src/EmployeeManager/server/
 ~$ dotnet restore
 ```
 
@@ -79,7 +83,7 @@ This outputs a minified JavaScript file in the `wwwroot` directory of the API vi
 To run a local environment on the server side:
 Use the `dotnet <COMMAND> <OPTIONS>` tool to run it in a terminal or use Visual Studio to run it with `CTL` + `F5`
 
-Navigate to localhost:5001 in a browser to see the current build running.
+Navigate to `localhost:5001` (or to ) in a browser to see the current build running.
 
 ## TODO
 
