@@ -335,7 +335,8 @@ ASALocalRun/
 
 # local
 .vscode
-src/EmployeeList/server/wwwroot/client/**/*
-src/EmployeeList/server/wwwroot/dist/**/*
-src/EmployeeList/server/wwwroot/**/*
+.vs
+wwwroot/client/**/*
+wwwroot/dist/**/*
+wwwroot/**/*
 package-lock.json
