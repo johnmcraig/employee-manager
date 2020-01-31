@@ -12,8 +12,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { EnvironmentUrlService } from './shared/services/environment-url.service';
 import { InternalErrorComponent } from './error-pages/internal-error/internal-error.component';
 import { ErrorHandlerService } from './shared/services/error-handler.service';
-import * as $ from 'jquery';
-import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
    declarations: [
@@ -21,8 +19,7 @@ import { FooterComponent } from './footer/footer.component';
       HomeComponent,
       NavbarComponent,
       NotfoundComponent,
-      InternalErrorComponent,
-      FooterComponent
+      InternalErrorComponent
    ],
    imports: [
       BrowserModule,
