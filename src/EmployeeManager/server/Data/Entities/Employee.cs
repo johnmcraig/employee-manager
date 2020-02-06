@@ -4,14 +4,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace server.Data.Entities
 {
-    public class Employee
+    public class Employee : BaseEntity
     {
-        [Key]
-        public Guid Id { get; set; }
-
         [Required(ErrorMessage = "A name is required")]
         public string Name { get; set; }
-        
+
         [Required(ErrorMessage = "A valid email is required")]
         public string Email { get; set; }
 
@@ -30,5 +27,14 @@ namespace server.Data.Entities
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? EndDate { get; set; }
+
+        /* As complexity grows, begin to add features of the entity that can be individually edited 
+        [Required(ErrorMessage = "A name is required")]
+        public string FirstName { get; set; } 
+        [Required(ErrorMessage = "A name is required")]
+        public string LastName { get; set; }  
+        [NotMapped]
+        public string FullName { get { return $"{FirstName} {LastName}"; } }
+        */
     }
 }
