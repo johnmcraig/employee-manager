@@ -8,6 +8,14 @@ This is a project to demonstrate extending concepts into larger projects. It is 
 
 The use of Data transfer objects (Dtos) using [Auto Mapper](https://automapper.org/) protects and maps the original entity classes found in the `Data\Entities` directory of the Api to classes for specific tasks, i.e. fetch, create, and edit.
 
+![Screenshot](resources/Employeetable.png)
+
+![Screenshot](resources/EmployeeCreate.png)
+
+## Demo
+
+Demo on Azure coming soon in 2020. Check back for updates.
+
 ## Development Stack
 
 The application was built using the following tools & frameworks:
@@ -21,6 +29,8 @@ The application was built using the following tools & frameworks:
 
 The project contains built in Api endpoint testing using [Swagger](https://github.com/domaindrivendev/Swashbuckle.AspNetCore). This was setup in the `Startup.cs`class in both the Configure services and IConfiguration to be used upon startup.
 After launching the project in a local environment, navigate to `https://localhost:5001/swagger` to view the test index page.
+
+![Screenshot](resources/Swagger.png)
 
 ## Setup
 
