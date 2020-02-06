@@ -18,9 +18,17 @@ namespace server.Data.Entities
         public string PhoneNumber { get; set; }
         
         public string Position { get; set; }
+
+        public decimal Salary { get; set; }
+
+        public decimal HourlyRate { get; set; }
         
         [DataType(DataType.Date)]  
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)] 
         public DateTime? StartDate { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime? EndDate { get; set; }
     }
 }
