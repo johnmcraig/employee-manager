@@ -4,8 +4,6 @@ import { Router } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { EmployeeForCreating } from 'src/app/_interfaces/employee-create';
 import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';
-// import * as $ from 'jquery';
-// declare var $: any;
 
 @Component({
   selector: 'app-employee-create',
@@ -25,7 +23,9 @@ export class EmployeeCreateComponent implements OnInit {
       startDate: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       position: new FormControl('', [Validators.required, Validators.maxLength(60)]),
-      phoneNumber: new FormControl('', [Validators.required])
+      phoneNumber: new FormControl('', [Validators.required]),
+      salary: new FormControl('', [Validators.required]),
+      hourlyRate: new FormControl('', [Validators.required])
     });
   }
 
@@ -53,13 +53,16 @@ export class EmployeeCreateComponent implements OnInit {
     }
   }
 
-  private executeEmployeeCreation(employeeFormValue: { name: any; startDate: Date; email: any; position: any; phoneNumber: any; }) {
+  private executeEmployeeCreation(employeeFormValue: { name: any; startDate: Date;
+    email: any; position: any; phoneNumber: any; salary: any; hourlyRate: any; }) {
     const employee: EmployeeForCreating = {
       name: employeeFormValue.name,
       position: employeeFormValue.position,
       startDate: employeeFormValue.startDate,
       email: employeeFormValue.email,
-      phoneNumber: employeeFormValue.phoneNumber
+      phoneNumber: employeeFormValue.phoneNumber,
+      salary: employeeFormValue.salary,
+      hourlyRate: employeeFormValue.hourlyRate
     };
 
     const apiUrl = 'employees/';
