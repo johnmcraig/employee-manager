@@ -37,6 +37,24 @@
 
   <div class="row">
     <div class="col-md-3">
+      <strong>Salary:</strong>
+    </div>
+    <div class="col-md-3">
+      {{ employee?.salary }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <strong>Hourly Rate:</strong>
+    </div>
+    <div class="col-md-3">
+      {{ employee?.hourlyRate }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
       <strong>Start Date:</strong>
     </div>
     <div class="col-md-3">
@@ -44,11 +62,20 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-md-3">
+      <strong>End Date:</strong>
+    </div>
+    <div class="col-md-3">
+      {{ employee?.endDate | date: "MM/dd/yyyy" }}
+    </div>
+  </div>
+
   <button
     type="button"
     id="update"
     class="btn btn-sm btn-success"
-    (click)="redirectToUpdatePage(employee.id)"
+    (click)="redirectToUpdatePage(employee?.id)"
   >
     Update Info
   </button>
