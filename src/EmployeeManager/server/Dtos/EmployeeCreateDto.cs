@@ -5,6 +5,9 @@ namespace server.Dtos
 {
     public class EmployeeCreateDto
     {
+        [Key]
+        public Guid Id { get; set; }
+
         [Required(ErrorMessage = "A name is required")]
         public string Name { get; set; }
 
@@ -15,16 +18,12 @@ namespace server.Dtos
 
         public string Position { get; set; }
 
-        public decimal Salary { get; set; }
+        public decimal? Salary { get; set; }
 
-        public decimal HourlyRate { get; set; }
+        public decimal? HourlyRate { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? StartDate { get; set; }
-
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime? EndDate { get; set; }
     }
 }

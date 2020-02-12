@@ -182,14 +182,19 @@ namespace server.Migrations
 
             modelBuilder.Entity("server.Data.Entities.AppUser", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
 
                     b.Property<byte[]>("PasswordHash");
 
                     b.Property<byte[]>("PasswordSalt");
-
-                    b.Property<string>("UserName");
 
                     b.HasKey("Id");
 
@@ -205,6 +210,11 @@ namespace server.Migrations
                         .IsRequired()
                         .HasMaxLength(150);
 
+                    b.Property<DateTime?>("EndDate");
+
+                    b.Property<decimal?>("HourlyRate")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100);
@@ -212,6 +222,9 @@ namespace server.Migrations
                     b.Property<string>("PhoneNumber");
 
                     b.Property<string>("Position");
+
+                    b.Property<decimal?>("Salary")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime?>("StartDate");
 

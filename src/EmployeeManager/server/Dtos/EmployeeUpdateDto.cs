@@ -15,9 +15,9 @@ namespace server.Dtos
 
         public string Position { get; set; }
 
-        public decimal Salary { get; set; }
+        public decimal? Salary { get; set; }
 
-        public decimal HourlyRate { get; set; }
+        public decimal? HourlyRate { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
