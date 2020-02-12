@@ -24,9 +24,12 @@ export class EmployeeUpdateComponent implements OnInit {
     this.employeeForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       startDate: new FormControl('', [Validators.required]),
+      endDate: new FormControl('', [Validators.nullValidator]),
       email: new FormControl('', [Validators.required, Validators.maxLength(200)]),
       position: new FormControl('', [Validators.required, Validators.maxLength(60)]),
-      phoneNumber: new FormControl('', [Validators.required])
+      phoneNumber: new FormControl('', [Validators.required]),
+      salary: new FormControl('', [Validators.required]),
+      hourlyRate: new FormControl('', [Validators.required])
     });
 
     this.getEmployeeById();
@@ -60,6 +63,9 @@ export class EmployeeUpdateComponent implements OnInit {
     this.employee.startDate = employeeFormValue.startDate;
     this.employee.email = employeeFormValue.email;
     this.employee.phoneNumber = employeeFormValue.phoneNumber;
+    this.employee.endDate = employeeFormValue.endDate;
+    this.employee.salary = employeeFormValue.salary;
+    this.employee.hourlyRate = employeeFormValue.hourlyRate;
 
     const apiUrl = `employees/${this.employee.id}`;
     this.repo.update(apiUrl, this.employee).subscribe(res => {

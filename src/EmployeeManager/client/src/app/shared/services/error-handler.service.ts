@@ -32,7 +32,7 @@ export class ErrorHandlerService {
 
   public handleOtherError(error: HttpErrorResponse) {
     this.createErrorMessage(error);
-    $('#errorModal').modal();
+    // $('#errorModal').modal();
   }
 
   private createErrorMessage(error: HttpErrorResponse) {
