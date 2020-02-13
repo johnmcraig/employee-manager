@@ -5,7 +5,7 @@ using server.Data.Entities;
 
 namespace server.Data
 {
-    public class EmployeeDbContext : IdentityDbContext
+    public class EmployeeDbContext : IdentityDbContext<AppUser>
     {
         private readonly IConfiguration _config;
         public EmployeeDbContext(DbContextOptions<EmployeeDbContext> options, IConfiguration config) 
@@ -15,7 +15,6 @@ namespace server.Data
         }
 
         public DbSet<Employee> Employees { get; set; }
-        public DbSet<AppUser> AppUsers { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
