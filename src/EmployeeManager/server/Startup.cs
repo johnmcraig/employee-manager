@@ -89,6 +89,8 @@ namespace server
                 app.UseHsts();
             }
 
+            app.UseDeveloperExceptionPage();
+
             Mapper.Initialize(mapper =>
             {
                 mapper.ValidateInlineMaps = false;
@@ -119,8 +121,8 @@ namespace server
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
-            app.UseMvc(routes => {
-
+            app.UseMvc(routes =>
+            {
                 routes.MapSpaFallbackRoute(
                     name: "spa-fallback",
                     defaults: new { controller = "Fallback", action = "Index"} 
