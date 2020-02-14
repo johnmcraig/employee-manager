@@ -76,6 +76,8 @@ namespace server
                     options.ApiVersionReader = new HeaderApiVersionReader("api-version");
             });
 
+            services.AddAuthentication();
+
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IApiVersionDescriptionProvider provider)
@@ -102,6 +104,8 @@ namespace server
 
             app.UseHttpsRedirection();
 
+            app.UseAuthentication();
+
             app.UseForwardedHeaders(new ForwardedHeadersOptions {
                 ForwardedHeaders = ForwardedHeaders.All
             });
@@ -118,8 +122,8 @@ namespace server
 
             app.UseCors("CorsPolicy");
 
-            app.UseDefaultFiles();
             app.UseStaticFiles();
+            app.UseDefaultFiles();
 
             app.UseMvc(routes =>
             {
