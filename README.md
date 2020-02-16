@@ -14,7 +14,7 @@ The use of Data transfer objects (Dtos) using [Auto Mapper](https://automapper.o
 
 ## Demo
 
-See a demo of the application running on Azure here: [Employee Manager on Azure](http://empmanagercore.azurewebsites.net) Or [TinyUrl](https://tinyurl.com/r8hpe5e).
+See a demo of the application running on Azure here: [Employee Manager on Azure](http://empmanagercore.azurewebsites.net/home) Or [TinyUrl](https://tinyurl.com/uur72we).
 
 ## Development Stack
 
