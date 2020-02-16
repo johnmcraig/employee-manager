@@ -123,6 +123,7 @@ namespace server
             app.UseCors("CorsPolicy");
 
             app.UseStaticFiles();
+
             app.UseDefaultFiles();
 
             app.UseMvc(routes =>
